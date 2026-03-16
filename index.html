@@ -34,14 +34,14 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 #chat-inner{display:flex;flex-direction:column;height:100%}
 #lang-bar{background:#f7f7f7;border-bottom:0.5px solid #eee;padding:7px 12px;display:flex;gap:5px;overflow-x:auto;flex-shrink:0}
 #lang-bar::-webkit-scrollbar{display:none}
-.lang-btn{font-size:10px;font-weight:400;padding:3px 9px;border-radius:20px;border:0.5px solid #ddd;background:#fff;cursor:pointer;white-space:nowrap;color:#555;transition:all 0.15s}
+.lang-btn{font-size:12px;font-weight:400;padding:3px 9px;border-radius:20px;border:0.5px solid #ddd;background:#fff;cursor:pointer;white-space:nowrap;color:#555;transition:all 0.15s}
 .lang-btn:hover,.lang-btn.active{background:#111;color:#fff;border-color:#111}
 #welcome{padding:14px 16px 8px;flex-shrink:0}
 #welcome-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;text-transform:uppercase;color:#111;line-height:1;margin-bottom:4px}
-#welcome-sub{font-size:11px;font-weight:300;color:#888;line-height:1.5}
+#welcome-sub{font-size:13px;font-weight:300;color:#888;line-height:1.5}
 #suggestions{padding:6px 12px;display:flex;gap:6px;overflow-x:auto;flex-shrink:0}
 #suggestions::-webkit-scrollbar{display:none}
-.suggest-btn{font-size:11px;font-weight:400;padding:5px 11px;border-radius:20px;border:0.5px solid #222;background:#fff;cursor:pointer;white-space:nowrap;color:#222;transition:all 0.15s;flex-shrink:0}
+.suggest-btn{font-size:13px;font-weight:400;padding:5px 11px;border-radius:20px;border:0.5px solid #222;background:#fff;cursor:pointer;white-space:nowrap;color:#222;transition:all 0.15s;flex-shrink:0}
 .suggest-btn:hover{background:#111;color:#fff}
 #messages{flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:8px}
 #messages::-webkit-scrollbar{width:3px}
@@ -50,7 +50,7 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .msg.user{align-self:flex-end;align-items:flex-end}
 .msg.assistant{align-self:flex-start;align-items:flex-start}
-.msg-bubble{padding:9px 13px;border-radius:16px;font-size:13px;line-height:1.6;font-weight:400}
+.msg-bubble{padding:9px 13px;border-radius:16px;font-size:15px;line-height:1.6;font-weight:400}
 .msg.user .msg-bubble{background:#111;color:#fff;border-bottom-right-radius:4px}
 .msg.assistant .msg-bubble{background:#f4f4f4;color:#111;border-bottom-left-radius:4px}
 .msg-label{font-size:9px;font-weight:300;letter-spacing:0.1em;color:#bbb;margin-bottom:2px;text-transform:uppercase}
@@ -77,16 +77,16 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 .prod-card-header:hover{background:#fafafa}
 .prod-card-left{display:flex;align-items:center;gap:10px}
 .prod-color-bar{width:4px;height:36px;border-radius:2px;flex-shrink:0}
-.prod-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;line-height:1}
-.prod-tagline{font-size:10px;font-weight:300;color:#888;margin-top:2px;font-style:italic}
+.prod-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;color:#111;text-transform:uppercase;line-height:1}
+.prod-tagline{font-size:12px;font-weight:300;color:#888;margin-top:2px;font-style:italic}
 .prod-badge{font-size:9px;font-weight:400;padding:2px 7px;border-radius:10px;letter-spacing:0.05em;text-transform:uppercase}
 .prod-body{padding:0 12px 12px;border-top:0.5px solid #f0f0f0;display:none}
 .prod-body.open{display:block}
-.prod-detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:0.5px solid #f5f5f5;font-size:11px}
+.prod-detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:0.5px solid #f5f5f5;font-size:13px}
 .prod-detail-row:last-child{border-bottom:none}
-.prod-detail-k{font-weight:400;color:#999;text-transform:uppercase;letter-spacing:0.08em;font-size:10px}
+.prod-detail-k{font-weight:400;color:#999;text-transform:uppercase;letter-spacing:0.08em;font-size:12px}
 .prod-detail-v{font-weight:400;color:#111;text-align:right;max-width:65%}
-.prod-ingredients{font-size:10px;color:#666;line-height:1.6;margin-top:6px;padding:8px;background:#f9f9f9;border-radius:4px}
+.prod-ingredients{font-size:12px;color:#666;line-height:1.6;margin-top:6px;padding:8px;background:#f9f9f9;border-radius:4px}
 
 /* bodhi special */
 .prod-card.bodhi{border-color:#c8c2f0}
@@ -100,11 +100,11 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 .learn-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:#111}
 .learn-subtitle{font-size:10px;color:#888;font-weight:300;margin-top:1px}
 .learn-icon{font-size:16px;flex-shrink:0}
-.learn-body{padding:0 14px 14px;border-top:0.5px solid #f0f0f0;display:none;font-size:12px;line-height:1.7;color:#333}
+.learn-body{padding:0 14px 14px;border-top:0.5px solid #f0f0f0;display:none;font-size:14px;line-height:1.7;color:#333}
 .learn-body.open{display:block}
 .learn-body p{margin-top:10px}
-.learn-body .highlight{background:#f4f0ff;border-left:3px solid #a89be0;padding:8px 10px;border-radius:0 4px 4px 0;margin-top:10px;font-size:11px;color:#444}
-.learn-body .vs-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}
+.learn-body .highlight{background:#f4f0ff;border-left:3px solid #a89be0;padding:8px 10px;border-radius:0 4px 4px 0;margin-top:10px;font-size:13px;color:#444}
+.learn-body .vs-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
 .learn-body .vs-table th{background:#111;color:#fff;padding:6px 8px;text-align:left;font-weight:500}
 .learn-body .vs-table td{padding:6px 8px;border-bottom:0.5px solid #eee}
 .learn-body .vs-table tr:last-child td{border-bottom:none}
@@ -284,18 +284,40 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#1D9E75"></div>
                 <div>
-                  <div class="prod-name">Bodai-Sancha Leaf</div>
-                  <div class="prod-tagline">Loose leaf · 2 varietals (A & B)</div>
+                  <div class="prod-name">Bodai-Sancha — Autumn Harvest</div>
+                  <div class="prod-tagline">2024 Autumn · Shuto Bancha</div>
                 </div>
               </div>
               <span class="prod-badge" style="background:#E1F5EE;color:#085041;">B2B</span>
             </div>
             <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Leaf A</span><span class="prod-detail-v">Bright lemon & yuzu citrus</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Leaf B</span><span class="prod-detail-v">Deeper fermentation, floral</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">Autumn 2024 (October)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Character</span><span class="prod-detail-v">Rich umami with citrus acidity</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Warm, fuller body</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Toyosawa, Fukuroi, Shizuoka</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Fermentation</span><span class="prod-detail-v">Natural lactic acid (~4 weeks)</span></div>
-              <div style="margin-top:8px;font-size:11px;color:#555;line-height:1.6;">The raw ingredient of Sparkling Tea bodhi. Please feel free to smell and touch the displayed samples.</div>
+              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">The raw ingredient of Sparkling Tea bodhi. Autumn harvest offers a slightly richer, umami-forward profile. Please feel free to smell and touch.</div>
+            </div>
+          </div>
+
+          <div class="prod-card">
+            <div class="prod-card-header" onclick="toggleProd(this)">
+              <div class="prod-card-left">
+                <div class="prod-color-bar" style="background:#085041"></div>
+                <div>
+                  <div class="prod-name">Bodai-Sancha — Winter Harvest</div>
+                  <div class="prod-tagline">2024 Winter · Kancha</div>
+                </div>
+              </div>
+              <span class="prod-badge" style="background:#E1F5EE;color:#085041;">B2B</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">Winter 2024 (Jan–Feb)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Character</span><span class="prod-detail-v">Clean, bright acidity</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Clear citrus, lighter body</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Toyosawa, Fukuroi, Shizuoka</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Fermentation</span><span class="prod-detail-v">Natural lactic acid (~4 weeks)</span></div>
+              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Winter harvest (Kancha) produces a cleaner, more refreshing acidity with a lighter body. The two harvests offer distinctly different expressions of the same tea.</div>
             </div>
           </div>
 
@@ -455,7 +477,10 @@ PRODUCTS:
 
 2. Sparkling Tea bodhi: Made by extracting Bodai-Sancha (lacto-fermented tea leaves) and adding carbonation. 0% alcohol, zero sugar, zero additives. 9 months shelf life. Ingredients: Water, Lactic-fermented tea (Camellia sinensis), Carbon dioxide. Taste: dry, wine-like acidity, citrus lift. NOT Kombucha.
 
-3. Bodai-Sancha (raw materials on display): Traditional Japanese fermented tea LEAF — not a beverage. The raw ingredient of bodhi. Lactic acid bacteria are naturally present in the tea leaves — no external addition. Leaf A: bright lemon/yuzu. Leaf B: deeper fermentation, floral. Powder: B2B foodservice use.
+3. Bodai-Sancha (raw materials on display): Traditional Japanese fermented tea LEAF — not a beverage. The raw ingredient of bodhi. Lactic acid bacteria are naturally present in the tea leaves — no external addition. Two harvests on display:
+- Autumn 2024 (Shuto Bancha, October harvest): slightly richer profile with umami notes and citrus acidity. Warmer, fuller body.
+- Winter 2024 (Kancha, Jan-Feb harvest): clean, bright acidity with lighter body. More refreshing and clear.
+Both harvests available as loose leaf and powder for B2B foodservice use.
 
 LACTO-FERMENTED TEA EXPLANATION: Tea leaves are steamed, then undergo anaerobic lactic acid fermentation for ~4 weeks using bacteria naturally present in the leaves, then sun-dried. Zero sugar, zero additives. The fermentation creates natural citrus aroma and bright acidity.
 

@@ -9,19 +9,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111}
-#app{display:flex;flex-direction:column;height:100dvh;max-width:520px;margin:0 auto}
+:root{
+  --text:#111;
+  --muted:#6b7280;
+  --line:#e9e9e9;
+  --bg-soft:#f8f8f8;
+  --radius:12px;
+}
+html,body{
+  height:100%;
+  background:#fff;
+  font-family:'Barlow',sans-serif;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+#app{display:flex;flex-direction:column;height:100dvh;max-width:560px;margin:0 auto}
 
 /* Header */
-#header{background:#111;color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-#header-brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.02em;text-transform:uppercase}
-#header-sub{font-size:9px;font-weight:300;letter-spacing:0.2em;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-top:1px}
+#header{background:#111;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+#header-brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.02em;text-transform:uppercase;line-height:1.1}
+#header-sub{font-size:10px;font-weight:300;letter-spacing:0.16em;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-top:2px}
 #header-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
 
 /* Tab bar */
-#tabs{display:flex;border-bottom:0.5px solid #e5e5e5;flex-shrink:0;background:#fff}
-.tab{flex:1;padding:10px 4px;font-family:'Barlow',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.05em;text-align:center;cursor:pointer;color:#999;border-bottom:2px solid transparent;transition:all 0.15s;text-transform:uppercase}
+#tabs{display:flex;border-bottom:0.5px solid var(--line);flex-shrink:0;background:#fff}
+.tab{flex:1;padding:12px 4px;font-family:'Barlow',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.05em;text-align:center;cursor:pointer;color:#999;border-bottom:2px solid transparent;transition:all 0.15s;text-transform:uppercase}
 .tab.active{color:#111;border-bottom-color:#111;font-weight:500}
 
 /* Screens */
@@ -33,13 +47,13 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 
 /* --- CHAT SCREEN --- */
 #chat-inner{display:flex;flex-direction:column;height:100%}
-#lang-bar{background:#f7f7f7;border-bottom:0.5px solid #eee;padding:7px 12px;display:flex;gap:5px;overflow-x:auto;flex-shrink:0}
+#lang-bar{background:var(--bg-soft);border-bottom:0.5px solid var(--line);padding:7px 12px;display:flex;gap:5px;overflow-x:auto;flex-shrink:0}
 #lang-bar::-webkit-scrollbar{display:none}
 .lang-btn{font-size:12px;font-weight:400;padding:3px 9px;border-radius:20px;border:0.5px solid #ddd;background:#fff;cursor:pointer;white-space:nowrap;color:#555;transition:all 0.15s}
 .lang-btn:hover,.lang-btn.active{background:#111;color:#fff;border-color:#111}
-#welcome{padding:14px 16px 8px;flex-shrink:0}
-#welcome-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;text-transform:uppercase;color:#111;line-height:1;margin-bottom:4px}
-#welcome-sub{font-size:13px;font-weight:300;color:#888;line-height:1.5}
+#welcome{padding:18px 18px 10px;flex-shrink:0}
+#welcome-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:24px;text-transform:uppercase;color:var(--text);line-height:1;margin-bottom:6px}
+#welcome-sub{font-size:14px;font-weight:300;color:var(--muted);line-height:1.5}
 #suggestions{padding:6px 12px;display:flex;gap:6px;overflow-x:auto;flex-shrink:0}
 #suggestions::-webkit-scrollbar{display:none}
 .suggest-btn{font-size:13px;font-weight:400;padding:5px 11px;border-radius:20px;border:0.5px solid #222;background:#fff;cursor:pointer;white-space:nowrap;color:#222;transition:all 0.15s;flex-shrink:0}
@@ -53,14 +67,14 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 .msg.assistant{align-self:flex-start;align-items:flex-start}
 .msg-bubble{padding:9px 13px;border-radius:16px;font-size:15px;line-height:1.6;font-weight:400}
 .msg.user .msg-bubble{background:#111;color:#fff;border-bottom-right-radius:4px}
-.msg.assistant .msg-bubble{background:#f4f4f4;color:#111;border-bottom-left-radius:4px}
+.msg.assistant .msg-bubble{background:var(--bg-soft);color:#111;border-bottom-left-radius:4px}
 .msg-label{font-size:9px;font-weight:300;letter-spacing:0.1em;color:#bbb;margin-bottom:2px;text-transform:uppercase}
-.typing-dots{display:flex;gap:4px;padding:10px 14px;background:#f4f4f4;border-radius:16px;border-bottom-left-radius:4px;width:fit-content}
+.typing-dots{display:flex;gap:4px;padding:10px 14px;background:var(--bg-soft);border-radius:16px;border-bottom-left-radius:4px;width:fit-content}
 .typing-dots span{width:5px;height:5px;border-radius:50%;background:#aaa;animation:bounce 1.2s infinite}
 .typing-dots span:nth-child(2){animation-delay:0.2s}
 .typing-dots span:nth-child(3){animation-delay:0.4s}
 @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
-#input-area{padding:8px 10px;border-top:0.5px solid #eee;display:flex;gap:7px;align-items:flex-end;flex-shrink:0;background:#fff}
+#input-area{padding:8px 10px;border-top:0.5px solid var(--line);display:flex;gap:7px;align-items:flex-end;flex-shrink:0;background:#fff}
 #input{flex:1;border:0.5px solid #ddd;border-radius:20px;padding:9px 14px;font-family:'Barlow',sans-serif;font-size:13px;color:#111;outline:none;resize:none;min-height:38px;max-height:90px;line-height:1.4;transition:border-color 0.15s}
 #input:focus{border-color:#111}
 #input::placeholder{color:#bbb}
@@ -73,7 +87,7 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 #products-inner{padding:14px}
 .prod-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:#111;margin-bottom:8px;padding-bottom:6px;border-bottom:1.5px solid #111}
 .prod-cards{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-.prod-card{border:0.5px solid #e5e5e5;border-radius:8px;overflow:hidden}
+.prod-card{border:0.5px solid var(--line);border-radius:8px;overflow:hidden}
 .prod-card-header{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:#fff;transition:background 0.1s}
 .prod-card-header:hover{background:#fafafa}
 .prod-card-left{display:flex;align-items:center;gap:10px}
@@ -83,11 +97,11 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 .prod-badge{font-size:9px;font-weight:400;padding:2px 7px;border-radius:10px;letter-spacing:0.05em;text-transform:uppercase}
 .prod-body{padding:0 12px 12px;border-top:0.5px solid #f0f0f0;display:none}
 .prod-body.open{display:block}
-.prod-detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:0.5px solid #f5f5f5;font-size:13px}
+.prod-detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:0.5px solid var(--line);font-size:13px}
 .prod-detail-row:last-child{border-bottom:none}
 .prod-detail-k{font-weight:400;color:#999;text-transform:uppercase;letter-spacing:0.08em;font-size:12px}
 .prod-detail-v{font-weight:400;color:#111;text-align:right;max-width:65%}
-.prod-ingredients{font-size:12px;color:#666;line-height:1.6;margin-top:6px;padding:8px;background:#f9f9f9;border-radius:4px}
+.prod-ingredients{font-size:12px;color:#666;line-height:1.6;margin-top:6px;padding:8px;background:var(--bg-soft);border-radius:4px}
 
 /* bodhi special */
 .prod-card.bodhi{border-color:#c8c2f0}
@@ -95,7 +109,7 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 
 /* --- LEARN SCREEN --- */
 #learn-inner{padding:14px}
-.learn-card{border:0.5px solid #e5e5e5;border-radius:8px;margin-bottom:10px;overflow:hidden}
+.learn-card{border:0.5px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
 .learn-card-header{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:#fff}
 .learn-card-header:hover{background:#fafafa}
 .learn-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:#111}
@@ -113,6 +127,70 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
 
 /* Footer */
 #footer{text-align:center;font-size:9px;font-weight:300;color:#ccc;letter-spacing:0.1em;padding:4px 0 6px;text-transform:uppercase;flex-shrink:0}
+
+/* ===== DESIGN REFINEMENT ===== */
+:root{
+  --text:#111;
+  --muted:#6b7280;
+  --line:#e9e9e9;
+  --bg-soft:#f8f8f8;
+  --radius:12px;
+}
+html,body{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+#app{max-width:560px}
+#header{padding:14px 16px}
+#header-brand{font-size:17px;line-height:1.1}
+#header-sub{font-size:10px;letter-spacing:0.16em}
+.tab{padding:12px 4px;font-size:12px}
+#welcome{padding:18px 18px 10px}
+#welcome-title{font-size:24px;margin-bottom:6px}
+#welcome-sub{font-size:14px;color:var(--muted)}
+
+/* Chat */
+#messages{padding:14px 16px;gap:10px}
+.msg{max-width:90%}
+.msg-bubble{padding:11px 14px;border-radius:18px;font-size:16px;line-height:1.7}
+.msg-label{font-size:10px;margin-bottom:3px}
+#input-area{padding:10px 12px}
+#input{font-size:14px;min-height:42px;padding:10px 14px}
+
+/* Products */
+#products-inner,#learn-inner{padding:16px}
+.prod-section-title{font-size:14px;margin-bottom:10px;padding-bottom:7px}
+.prod-cards{gap:10px;margin-bottom:20px}
+.prod-card,.learn-card{border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.prod-card-header,.learn-card-header{padding:12px 14px}
+.prod-name{font-size:18px;line-height:1.05}
+.prod-tagline{font-size:12px;color:var(--muted)}
+.prod-body{padding:4px 14px 14px}
+.prod-detail-row{padding:8px 0}
+.prod-detail-k{font-size:11px;color:#8b8b8b}
+.prod-detail-v{font-size:13px;line-height:1.5}
+.prod-ingredients{font-size:12px;line-height:1.7;margin-top:8px;padding:10px;background:var(--bg-soft);border-radius:8px}
+
+/* Learn */
+.learn-body{padding:0 14px 14px;font-size:15px;line-height:1.75;color:#333}
+.learn-body p{margin-top:12px}
+.learn-body .highlight{margin-top:12px;padding:10px 12px;font-size:13px;line-height:1.7;background:#f7f4ff}
+.learn-body .vs-table{display:block;overflow-x:auto;white-space:nowrap;margin-top:12px;font-size:12px}
+.learn-body .vs-table th,.learn-body .vs-table td{padding:8px 10px}
+
+/* prod-toggle icon */
+.prod-toggle{margin-left:8px;font-size:18px;color:#bbb;flex-shrink:0;line-height:1}
+.prod-card-header{display:flex;align-items:center;justify-content:space-between}
+.prod-card-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+
+/* section-note */
+.section-note{font-size:11px;color:#6b7280;margin:-2px 0 10px;letter-spacing:0.04em;text-transform:uppercase}
+
+/* Chat larger */
+#messages{padding:16px 18px;gap:12px}
+.msg{max-width:92%}
+.msg-bubble{font-size:16px;line-height:1.75;padding:12px 15px}
+#input{font-size:14px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -122,7 +200,13 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
       <div id="header-brand">長峰製茶 Nagamine Seicha</div>
       <div id="header-sub">World Tea Expo 2026 · Las Vegas</div>
     </div>
-    <div id="header-dot"></div>
+    <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
+      <a href="https://www.instagram.com/nagamine.tea/" target="_blank" id="ig-btn" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:0.5px solid rgba(255,255,255,0.25);border-radius:20px;padding:5px 10px;text-decoration:none;color:#fff;transition:background 0.15s;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+        <span style="font-size:10px;font-weight:400;letter-spacing:0.05em;">@nagamine.tea</span>
+      </a>
+      <div id="header-dot"></div>
+    </div>
   </div>
 
   <div id="tabs">
@@ -165,6 +249,7 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
       <div id="products-inner">
 
         <div class="prod-section-title">Craft Sparkling Tea</div>
+        <div class="section-note">Unsweetened · Non-alcoholic · 200mL · Made in Japan · pH &lt;4.6</div>
         <div class="prod-cards">
 
           <div class="prod-card">
@@ -182,8 +267,6 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Seafood, light appetizers</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Bright citrus, yuzu, lemon</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Crisp & dry</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Alcohol</span><span class="prod-detail-v">0.0%</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Sugar</span><span class="prod-detail-v">Zero</span></div>
               <div class="prod-ingredients">Water, Green tea (Sencha Miyama-Kaori, pesticide-free), Dried yuzu peel, Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.</div>
             </div>
           </div>
@@ -203,8 +286,6 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Grilled meat</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Lemon myrtle, smoky tea</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Very dry & refreshing</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Alcohol</span><span class="prod-detail-v">0.0%</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Sugar</span><span class="prod-detail-v">Zero</span></div>
               <div class="prod-ingredients">Water, Green tea, Lemon myrtle, Oolong hojicha, Lemon peel, Dried yuzu peel, Chamomile, Citric acid, Malic acid, Ascorbic acid, Carbon dioxide.</div>
             </div>
           </div>
@@ -225,7 +306,6 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Baked apple, cinnamon, osmanthus</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Warm & floral</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Allergen</span><span class="prod-detail-v" style="color:#c00">Contains: Apple</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Alcohol</span><span class="prod-detail-v">0.0%</span></div>
               <div class="prod-ingredients">Water, Black tea (Koshin, JAS organic), Dried apple pieces, Cinnamon, Osmanthus, Malic acid, Ascorbic acid, Carbon dioxide. Contains: Apple.</div>
             </div>
           </div>
@@ -245,8 +325,6 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Spicy or savory dishes</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Roasted tea, gentle ginger</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Dry & warming</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Alcohol</span><span class="prod-detail-v">0.0%</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Sugar</span><span class="prod-detail-v">Zero</span></div>
               <div class="prod-ingredients">Water, Oolong hojicha (pesticide-free), Dried ginger (Kochi, Japan), Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.</div>
             </div>
           </div>
@@ -254,6 +332,7 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
         </div>
 
         <div class="prod-section-title">Sparkling Tea bodhi</div>
+        <div class="section-note">Lacto-fermented · Zero additives · 9 months shelf life</div>
         <div class="prod-cards">
           <div class="prod-card bodhi">
             <div class="prod-card-header" onclick="toggleProd(this)">
@@ -269,8 +348,6 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Base</span><span class="prod-detail-v">Bodai-Sancha (fermented tea leaf)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Taste</span><span class="prod-detail-v">Dry, wine-like acidity, citrus lift</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Alcohol</span><span class="prod-detail-v">0.0%</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Sugar</span><span class="prod-detail-v">Zero</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Additives</span><span class="prod-detail-v">None</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Shelf life</span><span class="prod-detail-v">9 months</span></div>
               <div class="prod-ingredients">Water · Lactic-fermented tea (Camellia sinensis) · Carbon dioxide — 3 ingredients only.</div>
@@ -279,6 +356,7 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
         </div>
 
         <div class="prod-section-title">Bodai-Sancha — Raw Materials</div>
+        <div class="section-note">Fermented tea leaf · Raw ingredient of bodhi · Available B2B</div>
         <div class="prod-cards">
           <div class="prod-card">
             <div class="prod-card-header" onclick="toggleProd(this)">
@@ -532,15 +610,16 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
-            <table class="vs-table">
-              <tr><th></th><th>Kombucha</th><th>bodhi</th></tr>
-              <tr><td>Base</td><td>Black/Green tea</td><td>Lacto-fermented tea leaf</td></tr>
-              <tr><td>Fermentation</td><td>SCOBY (yeast + acetic acid)</td><td>Natural lactic acid</td></tr>
-              <tr><td>Sugar added</td><td>Yes (required)</td><td>None</td></tr>
-              <tr><td>Alcohol</td><td>Trace amounts possible</td><td>0.0%</td></tr>
-              <tr><td>Taste</td><td>Vinegar-like, often sweet</td><td>Wine-like, dry</td></tr>
-              <tr><td>Calories</td><td>Low-calorie</td><td>Zero</td></tr>
-            </table>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+              <div style="background:#f8f8f8;border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
+                <span style="font-weight:500;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Kombucha</span><br>
+                Sugar required · SCOBY fermentation · Vinegar-like acidity · Trace alcohol possible · Sweet taste
+              </div>
+              <div style="background:#f0eeff;border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;border-left:3px solid #a89be0;">
+                <span style="font-weight:500;color:#534AB7;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">bodhi</span><br>
+                No sugar · Natural lactic acid fermentation · 0.0% alcohol · Wine-like dry acidity · Lacto-fermented tea leaf
+              </div>
+            </div>
             <div class="highlight">bodhi is not a kombucha alternative — it is an entirely new category.</div>
           </div>
         </div>
@@ -569,6 +648,27 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
             <div>
+              <div class="learn-title">How to Order / Contact Us</div>
+              <div class="learn-subtitle">Wholesale, B2B & retail inquiries</div>
+            </div>
+            <span class="learn-icon">+</span>
+          </div>
+          <div class="learn-body">
+            <p>We welcome inquiries from importers, distributors, restaurants, hotels, and retailers worldwide.</p>
+            <table class="vs-table">
+              <tr><th>Channel</th><th>Details</th></tr>
+              <tr><td>Email</td><td>info@nagamine-seicha.co.jp</td></tr>
+              <tr><td>Instagram</td><td>@nagamine.tea</td></tr>
+              <tr><td>Website</td><td>nagamine.jp</td></tr>
+              <tr><td>Phone</td><td>+81-54-624-0671</td></tr>
+            </table>
+            <div class="highlight">At this booth: please leave your business card or scan the QR code. Our team will follow up with you after the event.</div>
+          </div>
+        </div>
+
+        <div class="learn-card">
+          <div class="learn-card-header" onclick="toggleLearn(this)">
+            <div>
               <div class="learn-title">About Nagamine Seicha</div>
               <div class="learn-subtitle">Est. 1876 · Shizuoka, Japan</div>
             </div>
@@ -578,7 +678,12 @@ html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:#111
             <p>Nagamine Seicha is a Japanese tea producer based in Yaizu, Shizuoka Prefecture — one of Japan's most renowned tea-growing regions.</p>
             <p>Founded in 1876, we have 150 years of tea expertise, with 8 stores across Japan including Tokyo, and a thriving online shop.</p>
             <p>From traditional sencha and hojicha to our pioneering lacto-fermented tea and sparkling tea, we invite you to explore tea in an entirely new way.</p>
-            <div class="highlight">nagamine.jp · +81-54-624-0671 · Yaizu, Shizuoka, Japan</div>
+            <div class="highlight" style="line-height:2;">
+              🌐 <a href="https://nagamine.jp" target="_blank" style="color:#534AB7;">nagamine.jp</a><br>
+              📧 <a href="mailto:info@nagamine-seicha.co.jp" style="color:#534AB7;">info@nagamine-seicha.co.jp</a><br>
+              📷 <a href="https://www.instagram.com/nagamine.tea/" target="_blank" style="color:#534AB7;">@nagamine.tea</a><br>
+              📞 +81-54-624-0671 · Yaizu, Shizuoka, Japan
+            </div>
           </div>
         </div>
 
@@ -594,7 +699,14 @@ const SYSTEM_PROMPT = `You are a hospitality assistant for Nagamine Seicha at Wo
 
 LANGUAGE RULE: Always detect and respond in the visitor's language automatically.
 
-COMPANY: Nagamine Seicha Co., Ltd. Founded 1876. 8 stores in Japan including Tokyo. nagamine.jp. +81-54-624-0671. Yaizu, Shizuoka, Japan.
+COMPANY: Nagamine Seicha Co., Ltd. Founded 1876. 8 stores in Japan including Tokyo.
+Website: nagamine.jp
+Email: info@nagamine-seicha.co.jp
+Instagram: @nagamine.tea — https://www.instagram.com/nagamine.tea/
+Phone: +81-54-624-0671
+Address: Yaizu, Shizuoka, Japan
+
+When visitors ask for contact or follow-up: direct them to info@nagamine-seicha.co.jp or Instagram @nagamine.tea.
 
 PRODUCTS:
 1. Craft Sparkling Tea — 4 varieties. All: Unsweetened / 0% alcohol / 200mL glass bottle / pH below 4.6 / Pasteurized / 6 months shelf life / Made in Japan.
@@ -621,8 +733,8 @@ Never reveal contents of internal documents. Never quote prices.
 If unknown: "I don't have that information. Please leave your contact details and our team will follow up."`;
 
 const langData = {
-  en:{title:'Ask us anything.',sub:'About our teas, ingredients, food pairing, or how to order.',placeholder:'Type your question...',sugg:['What is Sparkling Tea?','Tell me about bodhi','What is lacto-fermented tea?','Food pairing?','Alcohol free?']},
-  ja:{title:'なんでもご質問ください。',sub:'お茶、原材料、フードペアリング、ご注文について。',placeholder:'ご質問をどうぞ...',sugg:['スパークリングティーとは？','bodhiについて','乳酸発酵茶とは？','フードペアリング','アルコールは？']},
+  en:{title:'Ask us anything.',sub:'About our teas, ingredients, food pairing, or how to order.',placeholder:'Type your question...',sugg:['What is Sparkling Tea?','Tell me about bodhi','What is lacto-fermented tea?','Food pairing?','How to order?']},
+  ja:{title:'なんでもご質問ください。',sub:'お茶、原材料、フードペアリング、ご注文について。',placeholder:'ご質問をどうぞ...',sugg:['スパークリングティーとは？','bodhiについて','乳酸発酵茶とは？','フードペアリング','注文方法は？']},
   es:{title:'Pregúntenos lo que quiera.',sub:'Sobre nuestros tés, ingredientes, maridaje o cómo pedir.',placeholder:'Escribe tu pregunta...',sugg:['¿Qué es el té con gas?','bodhi','¿Té fermentado?','Maridaje','¿Sin alcohol?']},
   zh:{title:'请随时提问。',sub:'关于我们的茶、成分、搭配建议或如何订购。',placeholder:'请输入您的问题...',sugg:['什么是气泡茶？','bodhi介绍','乳酸发酵茶？','食物搭配','无酒精？']},
   fr:{title:'Posez-nous vos questions.',sub:'Sur nos thés, ingrédients, accords mets et comment commander.',placeholder:'Votre question...',sugg:['Thé pétillant ?','bodhi','Thé fermenté ?','Accord mets','Sans alcool ?']},
@@ -643,7 +755,9 @@ function showTab(tab){
 
 function toggleProd(header){
   const body=header.nextElementSibling;
-  body.classList.toggle('open');
+  const icon=header.querySelector('.prod-toggle');
+  const isOpen=body.classList.toggle('open');
+  if(icon) icon.textContent=isOpen?'−':'+';
 }
 
 function toggleLearn(header){

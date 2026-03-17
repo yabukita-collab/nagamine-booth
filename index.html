@@ -191,6 +191,12 @@ html,body{
 .msg{max-width:92%}
 .msg-bubble{font-size:16px;line-height:1.75;padding:12px 15px}
 #input{font-size:14px;line-height:1.5}
+
+#contact-bar{
+  display:flex;align-items:center;gap:10px;
+  padding:6px 18px 0;
+  flex-shrink:0;
+}
 </style>
 </head>
 <body>
@@ -233,6 +239,17 @@ html,body{
           <div id="welcome-title">Ask us anything.</div>
           <div id="welcome-sub">About our teas, ingredients, food pairing, or how to order.<br>We speak your language.</div>
         </div>
+        <div id="contact-bar">
+          <a href="mailto:info@nagamine-seicha.co.jp" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:400;color:#555;text-decoration:none;letter-spacing:0.03em;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+            info@nagamine-seicha.co.jp
+          </a>
+          <span style="color:#ddd;font-size:10px;">·</span>
+          <a href="https://www.instagram.com/nagamine.tea/" target="_blank" style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:400;color:#555;text-decoration:none;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @nagamine.tea
+          </a>
+        </div>
         <div id="suggestions"></div>
         <div id="messages"></div>
         <div id="input-area">
@@ -247,6 +264,30 @@ html,body{
     <!-- PRODUCTS -->
     <div id="screen-products" class="screen">
       <div id="products-inner">
+
+        <div class="prod-section-title">Sparkling Tea bodhi</div>
+        <div class="section-note">Lacto-fermented · Zero additives · 9 months shelf life</div>
+        <div class="prod-cards">
+          <div class="prod-card bodhi">
+            <div class="prod-card-header" onclick="toggleProd(this)">
+              <div class="prod-card-left">
+                <div class="prod-color-bar" style="background:#a89be0"></div>
+                <div>
+                  <div class="prod-name">Sparkling Tea bodhi</div>
+                  <div class="prod-tagline">Lacto-Fermented · Champagne-like bubbles</div>
+                </div>
+              </div>
+              <span class="prod-badge" style="background:#f0eeff;color:#534AB7;">Unique</span>
+            </div>
+            <div class="prod-body">
+              <div class="prod-detail-row"><span class="prod-detail-k">Base</span><span class="prod-detail-v">Bodai-Sancha (fermented tea leaf)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Taste</span><span class="prod-detail-v">Dry, wine-like acidity, citrus lift</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Additives</span><span class="prod-detail-v">None</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Shelf life</span><span class="prod-detail-v">9 months</span></div>
+              <div class="prod-ingredients">Water · Lactic-fermented tea (Camellia sinensis) · Carbon dioxide — 3 ingredients only.</div>
+            </div>
+          </div>
+        </div>
 
         <div class="prod-section-title">Craft Sparkling Tea</div>
         <div class="section-note">Unsweetened · Non-alcoholic · 200mL · Made in Japan · pH &lt;4.6</div>
@@ -333,30 +374,6 @@ html,body{
             </div>
           </div>
 
-        </div>
-
-        <div class="prod-section-title">Sparkling Tea bodhi</div>
-        <div class="section-note">Lacto-fermented · Zero additives · 9 months shelf life</div>
-        <div class="prod-cards">
-          <div class="prod-card bodhi">
-            <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#a89be0"></div>
-                <div>
-                  <div class="prod-name">Sparkling Tea bodhi</div>
-                  <div class="prod-tagline">Lacto-Fermented · Champagne-like bubbles</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#f0eeff;color:#534AB7;">Unique</span>
-            </div>
-            <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Base</span><span class="prod-detail-v">Bodai-Sancha (fermented tea leaf)</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Taste</span><span class="prod-detail-v">Dry, wine-like acidity, citrus lift</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Additives</span><span class="prod-detail-v">None</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Shelf life</span><span class="prod-detail-v">9 months</span></div>
-              <div class="prod-ingredients">Water · Lactic-fermented tea (Camellia sinensis) · Carbon dioxide — 3 ingredients only.</div>
-            </div>
-          </div>
         </div>
 
         <div class="prod-section-title">Bodai-Sancha — Raw Materials</div>
@@ -925,6 +942,21 @@ async function sendMessage(){
 }
 
 initSugg();
+
+// 初回ウェルカムメッセージ
+setTimeout(() => {
+  const welcomeMsg = `Welcome to Nagamine Seicha.
+
+We offer:
+• Craft Sparkling Tea — 5 varieties (0% alcohol, no sugar)
+• Bodai-Sancha — lacto-fermented tea leaf & powder
+
+What would you like to know?
+  1. Product overview
+  2. Food pairing ideas
+  3. Wholesale / B2B inquiry`;
+  addMsg('assistant', welcomeMsg);
+}, 300);
 </script>
 </body>
 </html>

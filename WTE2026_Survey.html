@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Nagamine Seicha — WTE 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--text:#111;--muted:#6b7280;--line:#e9e9e9;--bg:#f8f8f8;--amber:#c9944a;--amber-l:#fdf4e0;--purple:#534ab7;--green:#1d9e75;--green-l:#e1f5ee}
+body{font-family:'Barlow',sans-serif;color:var(--text);background:#fff;min-height:100vh}
+#app{max-width:520px;margin:0 auto;padding-bottom:40px}
+#header{background:#111;color:#fff;padding:14px 18px}
+#header-brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:0.02em}
+#header-sub{font-size:10px;font-weight:300;letter-spacing:0.16em;color:rgba(255,255,255,0.5);text-transform:uppercase;margin-top:2px}
+#intro{padding:16px 18px 0}
+#intro-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;margin-bottom:5px}
+#intro-sub{font-size:12px;font-weight:300;color:var(--muted);line-height:1.6}
+form{padding:14px 18px}
+.section{margin-bottom:20px}
+.section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#111;border-bottom:1.5px solid #111;padding-bottom:5px;margin-bottom:12px}
+.field{margin-bottom:11px}
+label.field-label{display:block;font-size:11px;font-weight:500;color:#111;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:5px}
+.req{color:var(--amber);margin-left:2px}
+input[type=text],input[type=email],textarea{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-family:'Barlow',sans-serif;font-size:14px;color:var(--text);background:#fff;outline:none;transition:border-color 0.15s}
+input:focus,textarea:focus{border-color:#111}
+textarea{resize:vertical;min-height:64px;line-height:1.5}
+
+/* Check & Radio */
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.check-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.check-item{display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;cursor:pointer;transition:all 0.15s;font-size:12px;font-weight:400;line-height:1.3}
+.check-item:hover{border-color:#111;background:var(--bg)}
+.check-item input{width:14px;height:14px;accent-color:#111;flex-shrink:0}
+.check-item.featured{border-color:var(--purple);background:#f0eeff}
+
+.radio-row{display:flex;gap:7px;flex-wrap:wrap}
+.radio-item{display:flex;align-items:center;gap:6px;padding:7px 12px;border:1px solid var(--line);border-radius:20px;cursor:pointer;font-size:12px;transition:all 0.15s;white-space:nowrap}
+.radio-item:hover{border-color:#111;background:var(--bg)}
+.radio-item input{width:13px;height:13px;accent-color:#111;flex-shrink:0}
+
+/* Priority badge */
+.priority-row{display:flex;gap:7px}
+.priority-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:10px 6px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:11px;font-weight:400;text-align:center;transition:all 0.15s;line-height:1.2}
+.priority-item:hover{border-color:#111;background:var(--bg)}
+.priority-item input{width:14px;height:14px;accent-color:#111}
+.priority-item.hot{border-color:#e24b4a;background:#fcebeb}
+.priority-item.warm{border-color:var(--amber);background:var(--amber-l)}
+.priority-item.cold{border-color:var(--line);background:var(--bg)}
+
+/* Submit */
+#submit-btn{width:100%;padding:14px;background:#111;color:#fff;border:none;border-radius:10px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.15s;margin-top:6px}
+#submit-btn:hover{background:#333}
+
+/* Thank you */
+#thankyou{display:none;padding:48px 20px;text-align:center}
+#thankyou-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:30px;text-transform:uppercase;margin-bottom:10px}
+#thankyou-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:11px;font-weight:500;margin-bottom:14px;letter-spacing:0.05em}
+#thankyou-sub{font-size:13px;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:16px}
+#thankyou-contact{font-size:11px;color:var(--muted)}
+
+/* Result */
+#result-area{display:none;padding:14px 18px;background:var(--bg);border-top:1px solid var(--line)}
+#result-label{font-size:10px;font-weight:500;color:#111;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+#result-text{font-family:monospace;font-size:10px;white-space:pre-wrap;color:#333;word-break:break-all;background:#fff;padding:10px;border-radius:6px;border:1px solid var(--line)}
+#copy-btn{margin-top:8px;padding:7px 16px;background:#111;color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:500;cursor:pointer;letter-spacing:0.05em}
+#copy-btn:hover{background:#333}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="header">
+    <div id="header-brand">長峰製茶 Nagamine Seicha</div>
+    <div id="header-sub">World Tea Expo 2026 · Las Vegas</div>
+  </div>
+  <div id="intro">
+    <div id="intro-title" style="margin-top:16px">Thank you for visiting.</div>
+    <div id="intro-sub">2 minutes · We will follow up after WTE.</div>
+  </div>
+
+  <form id="survey-form">
+
+    <!-- 1. Contact -->
+    <div class="section" style="margin-top:16px">
+      <div class="section-title">1. Your information</div>
+      <div class="field">
+        <label class="field-label">Name <span class="req">*</span></label>
+        <input type="text" id="name" placeholder="Full name" required>
+      </div>
+      <div class="field">
+        <label class="field-label">Company <span class="req">*</span></label>
+        <input type="text" id="company" placeholder="Company or organization">
+      </div>
+      <div class="field">
+        <label class="field-label">Email <span class="req">*</span></label>
+        <input type="email" id="email" placeholder="your@email.com" required>
+      </div>
+      <div class="field">
+        <label class="field-label">Your role</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="role" value="Importer"> Importer</label>
+          <label class="check-item"><input type="checkbox" name="role" value="Distributor"> Distributor</label>
+          <label class="check-item"><input type="checkbox" name="role" value="Restaurant / Bar"> Restaurant / Bar</label>
+          <label class="check-item"><input type="checkbox" name="role" value="Hotel"> Hotel</label>
+          <label class="check-item"><input type="checkbox" name="role" value="Retail / Online"> Retail / Online</label>
+          <label class="check-item"><input type="checkbox" name="role" value="Other"> Other</label>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field-label">Country</label>
+        <input type="text" id="country" placeholder="e.g. USA, France, Singapore">
+      </div>
+    </div>
+
+    <!-- 2. Interest -->
+    <div class="section">
+      <div class="section-title">2. What interests you?</div>
+      <div class="field">
+        <label class="field-label">Products (select all that apply)</label>
+        <div class="check-grid">
+          <label class="check-item featured"><input type="checkbox" name="prod" value="Sparkling Tea bodhi"> Sparkling Tea bodhi</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Yuzu Sencha"> Yuzu Sencha</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Lemon Bancha"> Lemon Bancha</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Apple Wakocha"> Apple Wakocha</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Ginger Hojicha"> Ginger Hojicha</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Matcha"> Matcha</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Bodai-Sancha leaf/powder"> Bodai-Sancha</label>
+          <label class="check-item"><input type="checkbox" name="prod" value="Other powders"> Other powders</label>
+        </div>
+      </div>
+      <div class="field" style="margin-top:12px">
+        <label class="field-label">Intended use</label>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="use" value="Drinks menu"> Drinks menu</label>
+          <label class="check-item"><input type="checkbox" name="use" value="Mocktail program"> Mocktail</label>
+          <label class="check-item"><input type="checkbox" name="use" value="Retail / resale"> Retail / resale</label>
+          <label class="check-item"><input type="checkbox" name="use" value="Import / distribution"> Import / distribute</label>
+          <label class="check-item"><input type="checkbox" name="use" value="Food / cafe / OEM"> Food / cafe / OEM</label>
+          <label class="check-item"><input type="checkbox" name="use" value="Exploring"> Exploring</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Priority signals -->
+    <div class="section">
+      <div class="section-title">3. Next steps</div>
+
+      <div class="field">
+        <label class="field-label">When are you looking to purchase?</label>
+        <div class="priority-row">
+          <label class="priority-item hot">
+            <input type="radio" name="timeline" value="Immediately (within 1 month)">
+            <span>Immediately</span>
+            <span style="font-size:10px;color:#a32d2d">within 1 month</span>
+          </label>
+          <label class="priority-item warm">
+            <input type="radio" name="timeline" value="1–3 months">
+            <span>1–3 months</span>
+            <span style="font-size:10px;color:#854f0b">planning ahead</span>
+          </label>
+          <label class="priority-item cold">
+            <input type="radio" name="timeline" value="Just exploring">
+            <span>Just exploring</span>
+            <span style="font-size:10px;color:var(--muted)">no rush</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Would you like us to send the price list?</label>
+        <div class="radio-row">
+          <label class="radio-item" style="border-color:var(--green);background:var(--green-l)">
+            <input type="radio" name="pricing" value="Yes — send price list and MOQ">
+            <span style="color:var(--green);font-weight:500">Yes, send pricing</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="pricing" value="Not now">
+            <span style="color:var(--muted)">Not now</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">How can we follow up?</label>
+        <div class="radio-row">
+          <label class="radio-item"><input type="radio" name="followup" value="Send sample shipment"> Sample shipment</label>
+          <label class="radio-item"><input type="radio" name="followup" value="Schedule a call"> Schedule a call</label>
+          <label class="radio-item"><input type="radio" name="followup" value="Just send info"> Just send info</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">Tasting impression or message (optional)</label>
+        <textarea id="tasting" placeholder="e.g. Yuzu Sencha was beautifully dry — would work on our oyster menu. Interested in 2 cases."></textarea>
+      </div>
+    </div>
+
+    <button type="submit" id="submit-btn">Submit &#8594;</button>
+  </form>
+
+  <div id="thankyou">
+    <div id="thankyou-title">Thank you!</div>
+    <div id="thankyou-badge" id="priority-badge"></div>
+    <div id="thankyou-sub">We will be in touch after WTE 2026.<br>Feel free to explore our products at nagamine.jp</div>
+    <div id="thankyou-contact">nagamine.jp &nbsp;·&nbsp; info@nagamine-seicha.co.jp &nbsp;·&nbsp; @nagamine.tea</div>
+  </div>
+
+  <div id="result-area">
+    <div id="result-label">Response data (copy for records)</div>
+    <div id="result-text"></div>
+    <button id="copy-btn" onclick="copyResult()">Copy</button>
+  </div>
+</div>
+
+<script>
+function getChecked(n){return[...document.querySelectorAll('input[name="'+n+'"]:checked')].map(c=>c.value).join(', ');}
+function getRadio(n){const e=document.querySelector('input[name="'+n+'"]:checked');return e?e.value:'';}
+
+function score(timeline, pricing, followup){
+  let s=0;
+  if(timeline==='Immediately (within 1 month)') s+=3;
+  else if(timeline==='1–3 months') s+=2;
+  if(pricing==='Yes — send price list and MOQ') s+=2;
+  if(followup==='Send sample shipment') s+=2;
+  else if(followup==='Schedule a call') s+=1;
+  if(s>=5) return {label:'🔴 HOT', color:'#a32d2d', bg:'#fcebeb'};
+  if(s>=3) return {label:'🟡 WARM', color:'#854f0b', bg:'#fdf4e0'};
+  return {label:'🔵 NURTURE', color:'#185fa5', bg:'#e6f1fb'};
+}
+
+function copyResult(){
+  navigator.clipboard.writeText(document.getElementById('result-text').textContent).then(()=>{
+    const b=document.getElementById('copy-btn');b.textContent='Copied!';setTimeout(()=>b.textContent='Copy',2000);
+  });
+}
+
+async function submitToFormspree(data){
+  try{
+    const res=await fetch('https://formspree.io/f/mnjglary',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(data)
+    });
+    return res.ok;
+  }catch(e){return false;}
+}
+
+document.getElementById('survey-form').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const name=document.getElementById('name').value.trim();
+  const email=document.getElementById('email').value.trim();
+  if(!name||!email){alert('Please enter your name and email.');return;}
+
+  const timeline=getRadio('timeline');
+  const pricing=getRadio('pricing');
+  const followup=getRadio('followup');
+  const priority=score(timeline,pricing,followup);
+
+  const data={
+    '★ PRIORITY': priority.label,
+    timestamp: new Date().toLocaleString('en-US',{timeZone:'America/Los_Angeles'}),
+    name,
+    company: document.getElementById('company').value,
+    email,
+    country: document.getElementById('country').value,
+    role: getChecked('role'),
+    products: getChecked('prod'),
+    intended_use: getChecked('use'),
+    timeline,
+    pricing_interest: pricing,
+    follow_up: followup,
+    message: document.getElementById('tasting').value,
+  };
+
+  const text=Object.entries(data).map(([k,v])=>k+': '+v).join('\n');
+
+  // Formspree送信
+  const btn=document.getElementById('submit-btn');
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  
+  // Formspree用データ（件名に優先度を含める）
+  const formData={
+    _subject: priority.label+' — WTE2026 Inquiry: '+name+' / '+document.getElementById('company').value,
+    ...data
+  };
+  const sent=await submitToFormspree(formData);
+  if(!sent){
+    btn.disabled=false;
+    btn.textContent='Submit →';
+    // 送信失敗でも画面は進める（手動コピーで対応）
+  }
+
+  document.getElementById('survey-form').style.display='none';
+
+  const ty=document.getElementById('thankyou');
+  ty.style.display='block';
+  const badge=document.getElementById('thankyou-badge');
+  badge.textContent=priority.label;
+  badge.style.background=priority.bg;
+  badge.style.color=priority.color;
+
+  document.getElementById('result-area').style.display='block';
+  document.getElementById('result-text').textContent=text;
+});
+</script>
+</body>
+</html>

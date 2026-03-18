@@ -210,6 +210,13 @@ html,body{
   transition:background 0.15s;
 }
 #survey-link:hover{background:#333}
+
+.prod-img{width:100%;height:120px;object-fit:cover;display:block;border-bottom:0.5px solid var(--line)}
+
+.video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:10px;overflow:hidden;margin-bottom:4px}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-section{margin-bottom:20px}
+.video-label{font-size:11px;font-weight:300;color:var(--muted);margin-top:6px;text-align:center;letter-spacing:0.04em}
 </style>
 </head>
 <body>
@@ -294,6 +301,7 @@ html,body{
         <div class="section-note">Lacto-fermented · Zero additives · 9 months shelf life</div>
         <div class="prod-cards">
           <div class="prod-card bodhi">
+            <img class="prod-img" src="https://nagamine-booth.vercel.app/bodhi.webp" alt="Sparkling Tea bodhi" loading="lazy">
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#a89be0"></div>
@@ -320,6 +328,7 @@ html,body{
         <div class="prod-cards">
 
           <div class="prod-card">
+            <img class="prod-img" src="https://nagamine-booth.vercel.app/yuzu_sencha.webp" alt="Yuzu Sencha" loading="lazy">
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#c8e06b"></div>
@@ -342,6 +351,7 @@ html,body{
           </div>
 
           <div class="prod-card">
+            <img class="prod-img" src="https://nagamine-booth.vercel.app/Lemonbancha.webp" alt="Lemon Bancha" loading="lazy">
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#e8cc3a"></div>
@@ -363,6 +373,7 @@ html,body{
           </div>
 
           <div class="prod-card">
+            <img class="prod-img" src="https://nagamine-booth.vercel.app/apple_wakocha.webp" alt="Apple Wakocha" loading="lazy">
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#d4875a"></div>
@@ -386,6 +397,7 @@ html,body{
           </div>
 
           <div class="prod-card">
+            <img class="prod-img" src="https://nagamine-booth.vercel.app/ginger_hojicha.webp" alt="Ginger Hojicha" loading="lazy">
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#c9944a"></div>
@@ -609,6 +621,18 @@ html,body{
     <!-- LEARN -->
     <div id="screen-learn" class="screen">
       <div id="learn-inner">
+        <div class="video-section">
+          <div class="video-wrap">
+            <iframe
+              src="https://www.youtube.com/embed/qVe6-0HrAqc"
+              title="Nagamine Seicha — Sparkling Tea"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="video-label">Nagamine Seicha · Craft Sparkling Tea &amp; bodhi</div>
+        </div>
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">

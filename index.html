@@ -435,6 +435,20 @@ html,body{
         <div class="section-note">Fermented tea leaf · Raw ingredient of bodhi · Available B2B</div>
         <div class="prod-cards">
           <div class="prod-card">
+            <div class="slider-wrap" id="bodai-slider">
+              <div class="slider-track" id="bodai-track">
+                <img src="https://nagamine-booth.vercel.app/bodaisancha_liquor.webp" alt="Bodai-Sancha — liquor" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodaisancha_leaf.webp" alt="Bodai-Sancha — leaf" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodaisancha_package.webp" alt="Bodai-Sancha — package" loading="lazy">
+              </div>
+              <button class="slider-btn prev" onclick="slideBodyi(-1)">&#8249;</button>
+              <button class="slider-btn next" onclick="slideBodyi(1)">&#8250;</button>
+              <div class="slider-dots">
+                <div class="slider-dot active" onclick="goSlide(0)"></div>
+                <div class="slider-dot" onclick="goSlide(1)"></div>
+                <div class="slider-dot" onclick="goSlide(2)"></div>
+              </div>
+            </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#1D9E75"></div>

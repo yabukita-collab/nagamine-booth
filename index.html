@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -349,7 +350,18 @@ html,body{
         <div class="prod-cards">
 
           <div class="prod-card">
-            <img class="prod-img" src="https://nagamine-booth.vercel.app/yuzu_sencha.webp" alt="Yuzu Sencha" loading="lazy">
+            <div class="slider-wrap" id="yuzu-slider">
+              <div class="slider-track" id="yuzu-track">
+                <img src="https://nagamine-booth.vercel.app/yuzu_sencha.webp" alt="Yuzu Sencha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/yuzu_sencha_bottle.webp" alt="Yuzu Sencha bottle" loading="lazy">
+              </div>
+              <button class="slider-btn prev" onclick="slideCraft('yuzu',-1)">&#8249;</button>
+              <button class="slider-btn next" onclick="slideCraft('yuzu',1)">&#8250;</button>
+              <div class="slider-dots">
+                <div class="slider-dot active" onclick="goCraft('yuzu',0)"></div>
+                <div class="slider-dot" onclick="goCraft('yuzu',1)"></div>
+              </div>
+            </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#c8e06b"></div>
@@ -372,7 +384,18 @@ html,body{
           </div>
 
           <div class="prod-card">
-            <img class="prod-img" src="https://nagamine-booth.vercel.app/Lemonbancha.webp" alt="Lemon Bancha" loading="lazy">
+            <div class="slider-wrap" id="lemon-slider">
+              <div class="slider-track" id="lemon-track">
+                <img src="https://nagamine-booth.vercel.app/Lemonbancha.webp" alt="Lemon Bancha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/lemon_bancha_bottle.webp" alt="Lemon Bancha bottle" loading="lazy">
+              </div>
+              <button class="slider-btn prev" onclick="slideCraft('lemon',-1)">&#8249;</button>
+              <button class="slider-btn next" onclick="slideCraft('lemon',1)">&#8250;</button>
+              <div class="slider-dots">
+                <div class="slider-dot active" onclick="goCraft('lemon',0)"></div>
+                <div class="slider-dot" onclick="goCraft('lemon',1)"></div>
+              </div>
+            </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#e8cc3a"></div>
@@ -394,7 +417,18 @@ html,body{
           </div>
 
           <div class="prod-card">
-            <img class="prod-img" src="https://nagamine-booth.vercel.app/apple_wakocha.webp" alt="Apple Wakocha" loading="lazy">
+            <div class="slider-wrap" id="apple-slider">
+              <div class="slider-track" id="apple-track">
+                <img src="https://nagamine-booth.vercel.app/apple_wakocha.webp" alt="Apple Wakocha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/apple_wakocha_bottle.webp" alt="Apple Wakocha bottle" loading="lazy">
+              </div>
+              <button class="slider-btn prev" onclick="slideCraft('apple',-1)">&#8249;</button>
+              <button class="slider-btn next" onclick="slideCraft('apple',1)">&#8250;</button>
+              <div class="slider-dots">
+                <div class="slider-dot active" onclick="goCraft('apple',0)"></div>
+                <div class="slider-dot" onclick="goCraft('apple',1)"></div>
+              </div>
+            </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#d4875a"></div>
@@ -418,7 +452,18 @@ html,body{
           </div>
 
           <div class="prod-card">
-            <img class="prod-img" src="https://nagamine-booth.vercel.app/ginger_hojicha.webp" alt="Ginger Hojicha" loading="lazy">
+            <div class="slider-wrap" id="ginger-slider">
+              <div class="slider-track" id="ginger-track">
+                <img src="https://nagamine-booth.vercel.app/ginger_hojicha.webp" alt="Ginger Hojicha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/ginger_hojicha_bottle.webp" alt="Ginger Hojicha bottle" loading="lazy">
+              </div>
+              <button class="slider-btn prev" onclick="slideCraft('ginger',-1)">&#8249;</button>
+              <button class="slider-btn next" onclick="slideCraft('ginger',1)">&#8250;</button>
+              <div class="slider-dots">
+                <div class="slider-dot active" onclick="goCraft('ginger',0)"></div>
+                <div class="slider-dot" onclick="goCraft('ginger',1)"></div>
+              </div>
+            </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
               <div class="prod-card-left">
                 <div class="prod-color-bar" style="background:#c9944a"></div>
@@ -1220,6 +1265,37 @@ function updateBodhiMain() {
     if (Math.abs(dx) > 40) slideBodhiMain(dx < 0 ? 1 : -1);
   }, {passive:true});
 })();
+
+// Craft Sparkling Tea sliders (yuzu / lemon / apple / ginger)
+const craftIdx = { yuzu: 0, lemon: 0, apple: 0, ginger: 0 };
+function slideCraft(key, dir) {
+  craftIdx[key] = (craftIdx[key] + dir + 2) % 2;
+  updateCraft(key);
+}
+function goCraft(key, idx) {
+  craftIdx[key] = idx;
+  updateCraft(key);
+}
+function updateCraft(key) {
+  const track = document.getElementById(key + '-track');
+  if (!track) return;
+  track.style.transform = 'translateX(-' + (craftIdx[key] * 100) + '%)';
+  document.querySelectorAll('#' + key + '-slider .slider-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === craftIdx[key]);
+  });
+}
+['yuzu','lemon','apple','ginger'].forEach(key => {
+  (function(){
+    let sx = 0;
+    const wrap = document.getElementById(key + '-slider');
+    if (!wrap) return;
+    wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    wrap.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) slideCraft(key, dx < 0 ? 1 : -1);
+    }, {passive:true});
+  })();
+});
 
 </script>
 </body>

@@ -9,43 +9,22 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --text:#111;
-  --muted:#6b7280;
-  --line:#e9e9e9;
-  --bg-soft:#f8f8f8;
-  --radius:12px;
-}
-html,body{
-  height:100%;
-  background:#fff;
-  font-family:'Barlow',sans-serif;
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
+:root{--text:#111;--muted:#6b7280;--line:#e9e9e9;--bg-soft:#f8f8f8;--radius:12px}
+html,body{height:100%;background:#fff;font-family:'Barlow',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 #app{display:flex;flex-direction:column;height:100dvh;max-width:560px;margin:0 auto}
-
-/* Header */
 #header{background:#111;color:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
 #header-brand{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;letter-spacing:0.02em;text-transform:uppercase;line-height:1.1}
 #header-sub{font-size:10px;font-weight:300;letter-spacing:0.16em;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-top:2px}
 #header-dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 2s infinite;flex-shrink:0}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-
-/* Tab bar */
 #tabs{display:flex;border-bottom:0.5px solid var(--line);flex-shrink:0;background:#fff}
 .tab{flex:1;padding:12px 4px;font-family:'Barlow',sans-serif;font-size:12px;font-weight:400;letter-spacing:0.05em;text-align:center;cursor:pointer;color:#999;border-bottom:2px solid transparent;transition:all 0.15s;text-transform:uppercase}
 .tab.active{color:#111;border-bottom-color:#111;font-weight:500}
-
-/* Screens */
 #screens{flex:1;overflow:hidden;position:relative}
 .screen{position:absolute;inset:0;overflow-y:auto;display:none}
 .screen.active{display:block}
 .screen::-webkit-scrollbar{width:3px}
 .screen::-webkit-scrollbar-thumb{background:#ddd}
-
-/* --- CHAT SCREEN --- */
 #chat-inner{display:flex;flex-direction:column;height:100%}
 #lang-bar{background:var(--bg-soft);border-bottom:0.5px solid var(--line);padding:7px 12px;display:flex;gap:5px;overflow-x:auto;flex-shrink:0}
 #lang-bar::-webkit-scrollbar{display:none}
@@ -58,166 +37,75 @@ html,body{
 #suggestions::-webkit-scrollbar{display:none}
 .suggest-btn{font-size:13px;font-weight:400;padding:5px 11px;border-radius:20px;border:0.5px solid #222;background:#fff;cursor:pointer;white-space:nowrap;color:#222;transition:all 0.15s;flex-shrink:0}
 .suggest-btn:hover{background:#111;color:#fff}
-#messages{flex:1;overflow-y:auto;padding:10px 14px;display:flex;flex-direction:column;gap:8px}
+#messages{flex:1;overflow-y:auto;padding:16px 18px;display:flex;flex-direction:column;gap:12px}
 #messages::-webkit-scrollbar{width:3px}
 #messages::-webkit-scrollbar-thumb{background:#ddd}
-.msg{display:flex;flex-direction:column;max-width:86%;animation:fadeIn 0.2s ease}
+.msg{display:flex;flex-direction:column;max-width:92%;animation:fadeIn 0.2s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 .msg.user{align-self:flex-end;align-items:flex-end}
 .msg.assistant{align-self:flex-start;align-items:flex-start}
-.msg-bubble{padding:9px 13px;border-radius:16px;font-size:15px;line-height:1.6;font-weight:400}
+.msg-bubble{padding:12px 15px;border-radius:18px;font-size:16px;line-height:1.75;font-weight:400}
 .msg.user .msg-bubble{background:#111;color:#fff;border-bottom-right-radius:4px}
 .msg.assistant .msg-bubble{background:var(--bg-soft);color:#111;border-bottom-left-radius:4px}
-.msg-label{font-size:9px;font-weight:300;letter-spacing:0.1em;color:#bbb;margin-bottom:2px;text-transform:uppercase}
+.msg-label{font-size:10px;font-weight:300;letter-spacing:0.1em;color:#bbb;margin-bottom:3px;text-transform:uppercase}
 .typing-dots{display:flex;gap:4px;padding:10px 14px;background:var(--bg-soft);border-radius:16px;border-bottom-left-radius:4px;width:fit-content}
 .typing-dots span{width:5px;height:5px;border-radius:50%;background:#aaa;animation:bounce 1.2s infinite}
 .typing-dots span:nth-child(2){animation-delay:0.2s}
 .typing-dots span:nth-child(3){animation-delay:0.4s}
 @keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
-#input-area{padding:8px 10px;border-top:0.5px solid var(--line);display:flex;gap:7px;align-items:flex-end;flex-shrink:0;background:#fff}
-#input{flex:1;border:0.5px solid #ddd;border-radius:20px;padding:9px 14px;font-family:'Barlow',sans-serif;font-size:13px;color:#111;outline:none;resize:none;min-height:38px;max-height:90px;line-height:1.4;transition:border-color 0.15s}
+#input-area{padding:10px 12px;border-top:0.5px solid var(--line);display:flex;gap:7px;align-items:flex-end;flex-shrink:0;background:#fff}
+#input{flex:1;border:0.5px solid #ddd;border-radius:20px;padding:10px 14px;font-family:'Barlow',sans-serif;font-size:14px;color:#111;outline:none;resize:none;min-height:42px;max-height:90px;line-height:1.5;transition:border-color 0.15s}
 #input:focus{border-color:#111}
 #input::placeholder{color:#bbb}
 #send-btn{width:38px;height:38px;border-radius:50%;background:#111;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s}
 #send-btn:hover{background:#333}
 #send-btn:disabled{background:#ccc;cursor:default}
 #send-btn svg{width:15px;height:15px;fill:#fff}
-
-/* --- PRODUCTS SCREEN --- */
-#products-inner{padding:14px}
-.prod-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:13px;letter-spacing:0.15em;text-transform:uppercase;color:#111;margin-bottom:8px;padding-bottom:6px;border-bottom:1.5px solid #111}
-.prod-cards{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
-.prod-card{border:0.5px solid var(--line);border-radius:8px;overflow:hidden}
-.prod-card-header{padding:10px 12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:#fff;transition:background 0.1s}
+#products-inner,#learn-inner{padding:16px}
+.prod-section-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.15em;text-transform:uppercase;color:#111;margin-bottom:10px;padding-bottom:7px;border-bottom:1.5px solid #111}
+.prod-cards{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.prod-card{border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
+.prod-card-header{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:#fff;transition:background 0.1s}
 .prod-card-header:hover{background:#fafafa}
-.prod-card-left{display:flex;align-items:center;gap:10px}
+.prod-card-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
 .prod-color-bar{width:4px;height:36px;border-radius:2px;flex-shrink:0}
-.prod-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:17px;color:#111;text-transform:uppercase;line-height:1}
-.prod-tagline{font-size:12px;font-weight:300;color:#888;margin-top:2px;font-style:italic}
+.prod-name{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:18px;color:#111;text-transform:uppercase;line-height:1.05}
+.prod-tagline{font-size:12px;font-weight:300;color:var(--muted);margin-top:2px;font-style:italic}
 .prod-badge{font-size:9px;font-weight:400;padding:2px 7px;border-radius:10px;letter-spacing:0.05em;text-transform:uppercase}
-.prod-body{padding:0 12px 12px;border-top:0.5px solid #f0f0f0;display:none}
+.prod-body{padding:4px 14px 14px;border-top:0.5px solid #f0f0f0;display:none}
 .prod-body.open{display:block}
-.prod-detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:0.5px solid var(--line);font-size:13px}
+.prod-detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:0.5px solid var(--line);font-size:13px}
 .prod-detail-row:last-child{border-bottom:none}
-.prod-detail-k{font-weight:400;color:#999;text-transform:uppercase;letter-spacing:0.08em;font-size:12px}
-.prod-detail-v{font-weight:400;color:#111;text-align:right;max-width:65%}
-.prod-ingredients{font-size:12px;color:#666;line-height:1.6;margin-top:6px;padding:8px;background:var(--bg-soft);border-radius:4px}
-
-/* bodhi special */
+.prod-detail-k{font-weight:400;color:#8b8b8b;text-transform:uppercase;letter-spacing:0.08em;font-size:11px}
+.prod-detail-v{font-weight:400;color:#111;text-align:right;max-width:65%;font-size:13px;line-height:1.5}
+.prod-ingredients{font-size:12px;color:#666;line-height:1.7;margin-top:8px;padding:10px;background:var(--bg-soft);border-radius:8px}
 .prod-card.bodhi{border-color:#c8c2f0}
 .prod-card.bodhi .prod-card-header{background:#faf9ff}
-
-/* --- LEARN SCREEN --- */
-#learn-inner{padding:14px}
-.learn-card{border:0.5px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.section-note{font-size:11px;color:#6b7280;margin:-2px 0 10px;letter-spacing:0.04em;text-transform:uppercase}
+.learn-card{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
 .learn-card-header{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;background:#fff}
 .learn-card-header:hover{background:#fafafa}
 .learn-title{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;text-transform:uppercase;color:#111}
 .learn-subtitle{font-size:10px;color:#888;font-weight:300;margin-top:1px}
 .learn-icon{font-size:16px;flex-shrink:0}
-.learn-body{padding:0 14px 14px;border-top:0.5px solid #f0f0f0;display:none;font-size:14px;line-height:1.7;color:#333}
+.learn-body{padding:0 14px 14px;border-top:0.5px solid #f0f0f0;display:none;font-size:15px;line-height:1.75;color:#333}
 .learn-body.open{display:block}
-.learn-body p{margin-top:10px}
-.learn-body .highlight{background:#f4f0ff;border-left:3px solid #a89be0;padding:8px 10px;border-radius:0 4px 4px 0;margin-top:10px;font-size:13px;color:#444}
-.learn-body .vs-table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px}
-.learn-body .vs-table th{background:#111;color:#fff;padding:6px 8px;text-align:left;font-weight:500}
-.learn-body .vs-table td{padding:6px 8px;border-bottom:0.5px solid #eee}
+.learn-body p{margin-top:12px}
+.learn-body .highlight{background:#f4f0ff;border-left:3px solid #a89be0;padding:10px 12px;border-radius:0 4px 4px 0;margin-top:12px;font-size:13px;line-height:1.7;color:#444}
+.learn-body .vs-table{display:block;overflow-x:auto;white-space:nowrap;width:100%;border-collapse:collapse;margin-top:12px;font-size:12px}
+.learn-body .vs-table th{background:#111;color:#fff;padding:8px 10px;text-align:left;font-weight:500}
+.learn-body .vs-table td{padding:8px 10px;border-bottom:0.5px solid #eee}
 .learn-body .vs-table tr:last-child td{border-bottom:none}
 .learn-body .vs-table td:first-child{color:#888}
-
-/* Footer */
 #footer{text-align:center;font-size:9px;font-weight:300;color:#ccc;letter-spacing:0.1em;padding:4px 0 6px;text-transform:uppercase;flex-shrink:0}
-
-/* ===== DESIGN REFINEMENT ===== */
-:root{
-  --text:#111;
-  --muted:#6b7280;
-  --line:#e9e9e9;
-  --bg-soft:#f8f8f8;
-  --radius:12px;
-}
-html,body{
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-#app{max-width:560px}
-#header{padding:14px 16px}
-#header-brand{font-size:17px;line-height:1.1}
-#header-sub{font-size:10px;letter-spacing:0.16em}
-.tab{padding:12px 4px;font-size:12px}
-#welcome{padding:18px 18px 10px}
-#welcome-title{font-size:24px;margin-bottom:6px}
-#welcome-sub{font-size:14px;color:var(--muted)}
-
-/* Chat */
-#messages{padding:14px 16px;gap:10px}
-.msg{max-width:90%}
-.msg-bubble{padding:11px 14px;border-radius:18px;font-size:16px;line-height:1.7}
-.msg-label{font-size:10px;margin-bottom:3px}
-#input-area{padding:10px 12px}
-#input{font-size:14px;min-height:42px;padding:10px 14px}
-
-/* Products */
-#products-inner,#learn-inner{padding:16px}
-.prod-section-title{font-size:14px;margin-bottom:10px;padding-bottom:7px}
-.prod-cards{gap:10px;margin-bottom:20px}
-.prod-card,.learn-card{border:1px solid var(--line);border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,0.03)}
-.prod-card-header,.learn-card-header{padding:12px 14px}
-.prod-name{font-size:18px;line-height:1.05}
-.prod-tagline{font-size:12px;color:var(--muted)}
-.prod-body{padding:4px 14px 14px}
-.prod-detail-row{padding:8px 0}
-.prod-detail-k{font-size:11px;color:#8b8b8b}
-.prod-detail-v{font-size:13px;line-height:1.5}
-.prod-ingredients{font-size:12px;line-height:1.7;margin-top:8px;padding:10px;background:var(--bg-soft);border-radius:8px}
-
-/* Learn */
-.learn-body{padding:0 14px 14px;font-size:15px;line-height:1.75;color:#333}
-.learn-body p{margin-top:12px}
-.learn-body .highlight{margin-top:12px;padding:10px 12px;font-size:13px;line-height:1.7;background:#f7f4ff}
-.learn-body .vs-table{display:block;overflow-x:auto;white-space:nowrap;margin-top:12px;font-size:12px}
-.learn-body .vs-table th,.learn-body .vs-table td{padding:8px 10px}
-
-/* prod-toggle icon */
-.prod-toggle{margin-left:8px;font-size:18px;color:#bbb;flex-shrink:0;line-height:1}
-.prod-card-header{display:flex;align-items:center;justify-content:space-between}
-.prod-card-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
-
-/* section-note */
-.section-note{font-size:11px;color:#6b7280;margin:-2px 0 10px;letter-spacing:0.04em;text-transform:uppercase}
-
-/* Chat larger */
-#messages{padding:16px 18px;gap:12px}
-.msg{max-width:92%}
-.msg-bubble{font-size:16px;line-height:1.75;padding:12px 15px}
-#input{font-size:14px;line-height:1.5}
-
-#contact-bar{
-  display:flex;align-items:center;gap:10px;
-  padding:6px 18px 0;
-  flex-shrink:0;
-}
-#survey-bar{
-  padding:8px 18px 0;
-  flex-shrink:0;
-}
-#survey-link{
-  display:inline-flex;align-items:center;gap:6px;
-  background:#111;color:#fff;
-  font-family:'Barlow',sans-serif;font-size:11px;font-weight:500;
-  letter-spacing:0.04em;text-decoration:none;text-transform:uppercase;
-  padding:7px 14px;border-radius:20px;
-  transition:background 0.15s;
-}
+#contact-bar{display:flex;align-items:center;gap:10px;padding:6px 18px 0;flex-shrink:0}
+#survey-bar{padding:8px 18px 0;flex-shrink:0}
+#survey-link{display:inline-flex;align-items:center;gap:6px;background:#111;color:#fff;font-family:'Barlow',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.04em;text-decoration:none;text-transform:uppercase;padding:7px 14px;border-radius:20px;transition:background 0.15s}
 #survey-link:hover{background:#333}
-
-.prod-img{width:100%;height:120px;object-fit:cover;display:block;border-bottom:0.5px solid var(--line)}
-
 .video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:10px;overflow:hidden;margin-bottom:4px}
 .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
 .video-section{margin-bottom:20px}
 .video-label{font-size:11px;font-weight:300;color:var(--muted);margin-top:6px;text-align:center;letter-spacing:0.04em}
-
 .slider-wrap{position:relative;width:100%;overflow:hidden;background:#000;border-bottom:0.5px solid var(--line)}
 .slider-track{display:flex;transition:transform 0.35s ease}
 .slider-track img{width:100%;flex-shrink:0;height:140px;object-fit:cover;display:block}
@@ -237,7 +125,7 @@ html,body{
       <div id="header-sub">World Tea Expo 2026 · Las Vegas</div>
     </div>
     <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
-      <a href="https://www.instagram.com/nagamine.tea/" target="_blank" id="ig-btn" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:0.5px solid rgba(255,255,255,0.25);border-radius:20px;padding:5px 10px;text-decoration:none;color:#fff;transition:background 0.15s;">
+      <a href="https://www.instagram.com/nagamine.tea/" target="_blank" style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border:0.5px solid rgba(255,255,255,0.25);border-radius:20px;padding:5px 10px;text-decoration:none;color:#fff;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
         <span style="font-size:10px;font-weight:400;letter-spacing:0.05em;">@nagamine.tea</span>
       </a>
@@ -246,15 +134,15 @@ html,body{
   </div>
 
   <div id="tabs">
-    <div class="tab" onclick="showTab('chat')">💬 Chat</div>
-    <div class="tab active" onclick="showTab('products')">🍵 Products</div>
+    <div class="tab active" onclick="showTab('chat')">💬 Chat</div>
+    <div class="tab" onclick="showTab('products')">🍵 Products</div>
     <div class="tab" onclick="showTab('learn')">📖 Learn</div>
   </div>
 
   <div id="screens">
 
     <!-- CHAT -->
-    <div id="screen-chat" class="screen">
+    <div id="screen-chat" class="screen active">
       <div id="chat-inner">
         <div id="lang-bar">
           <span style="font-size:10px;font-weight:300;color:#bbb;align-self:center;white-space:nowrap;margin-right:2px;">Your language:</span>
@@ -285,12 +173,6 @@ html,body{
           <a href="/survey" target="_blank" id="survey-link">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
             Leave your contact &amp; get follow-up
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-        <div id="pricelist-bar" style="padding:6px 12px 0;">
-          <a href="https://raw.githubusercontent.com/yabukita-collab/nagamine-booth/main/WTE2026_PriceList.pdf" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 14px;background:#111;color:#fff;border-radius:8px;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:0.04em;">
-            📋 View Price List (PDF)
           </a>
         </div>
         <div id="suggestions"></div>
@@ -305,7 +187,7 @@ html,body{
     </div>
 
     <!-- PRODUCTS -->
-    <div id="screen-products" class="screen active">
+    <div id="screen-products" class="screen">
       <div id="products-inner">
         <div style="padding:14px 0 10px;font-family:'Barlow',sans-serif;font-size:13px;font-weight:300;color:#6b7280;line-height:1.6;border-bottom:0.5px solid #e9e9e9;margin-bottom:16px;">
           Nagamine Seicha is a Japanese tea producer from Shizuoka, Japan, Est. 1876.<br>
@@ -318,8 +200,8 @@ html,body{
           <div class="prod-card bodhi">
             <div class="slider-wrap" id="bodhi-slider">
               <div class="slider-track" id="bodhi-track">
-                <img src="https://nagamine-booth.vercel.app/bodhi.webp" alt="Sparkling Tea bodhi — glass" loading="lazy">
-                <img src="https://nagamine-booth.vercel.app/bodhi_bottle.webp" alt="Sparkling Tea bodhi — bottle" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodhi.webp" alt="bodhi glass" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodhi_bottle.webp" alt="bodhi bottle" loading="lazy">
               </div>
               <button class="slider-btn prev" onclick="slideBodhiMain(-1)">&#8249;</button>
               <button class="slider-btn next" onclick="slideBodhiMain(1)">&#8250;</button>
@@ -339,7 +221,7 @@ html,body{
               <span class="prod-badge" style="background:#f0eeff;color:#534AB7;">Unique</span>
             </div>
             <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Base</span><span class="prod-detail-v">Bodai-Sancha — fermented tea leaf on display at our booth</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Base</span><span class="prod-detail-v">Bodai-Sancha — fermented tea leaf</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Process</span><span class="prod-detail-v">Extraction + CO₂ — not bottle-conditioned</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Taste</span><span class="prod-detail-v">Dry, wine-like acidity, citrus lift</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Additives</span><span class="prod-detail-v">None</span></div>
@@ -352,70 +234,49 @@ html,body{
         <div class="prod-section-title">Craft Sparkling Tea</div>
         <div class="section-note">Unsweetened · Non-alcoholic · 200mL · Made in Japan</div>
         <div class="prod-cards">
-
           <div class="prod-card">
             <div class="slider-wrap" id="yuzu-slider">
               <div class="slider-track" id="yuzu-track">
-                <img src="https://nagamine-booth.vercel.app/yuzu_sencha.webp" alt="Yuzu Sencha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/yuzu_sencha.webp" alt="Yuzu Sencha" loading="lazy">
                 <img src="https://nagamine-booth.vercel.app/yuzu_sencha_bottle.webp" alt="Yuzu Sencha bottle" loading="lazy">
               </div>
               <button class="slider-btn prev" onclick="slideCraft('yuzu',-1)">&#8249;</button>
               <button class="slider-btn next" onclick="slideCraft('yuzu',1)">&#8250;</button>
-              <div class="slider-dots">
-                <div class="slider-dot active" onclick="goCraft('yuzu',0)"></div>
-                <div class="slider-dot" onclick="goCraft('yuzu',1)"></div>
-              </div>
+              <div class="slider-dots"><div class="slider-dot active" onclick="goCraft('yuzu',0)"></div><div class="slider-dot" onclick="goCraft('yuzu',1)"></div></div>
             </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#c8e06b"></div>
-                <div>
-                  <div class="prod-name">Yuzu Sencha</div>
-                  <div class="prod-tagline">"Like the finest white wine"</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#f0fad0;color:#3B6D11;">Pesticide-free leaves</span>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#c8e06b"></div><div><div class="prod-name">Yuzu Sencha</div><div class="prod-tagline">"Like the finest white wine"</div></div></div>
+              <span class="prod-badge" style="background:#f0fad0;color:#3B6D11;">Pesticide-free</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Seafood, light appetizers</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Tenku Farm, Mt.Chiba, Shimada, Shizuoka (400m)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Tenku Farm, Shimada, Shizuoka (400m)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Cultivar</span><span class="prod-detail-v">Miyama-Kaori</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Bright citrus, yuzu, lemon</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Crisp & dry</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Extraction</span><span class="prod-detail-v">Low-pressure vacuum (≤ 70°C)</span></div>
-              <div class="prod-ingredients">Water, Green tea (Sencha Miyama-Kaori, grown without pesticides), Dried yuzu peel, Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.</div>
+              <div class="prod-ingredients">Water, Green tea (Miyama-Kaori, pesticide-free), Dried yuzu peel, Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.</div>
             </div>
           </div>
 
           <div class="prod-card">
             <div class="slider-wrap" id="lemon-slider">
               <div class="slider-track" id="lemon-track">
-                <img src="https://nagamine-booth.vercel.app/Lemonbancha.webp" alt="Lemon Bancha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/Lemonbancha.webp" alt="Lemon Bancha" loading="lazy">
                 <img src="https://nagamine-booth.vercel.app/lemon_bancha_bottle.webp" alt="Lemon Bancha bottle" loading="lazy">
               </div>
               <button class="slider-btn prev" onclick="slideCraft('lemon',-1)">&#8249;</button>
               <button class="slider-btn next" onclick="slideCraft('lemon',1)">&#8250;</button>
-              <div class="slider-dots">
-                <div class="slider-dot active" onclick="goCraft('lemon',0)"></div>
-                <div class="slider-dot" onclick="goCraft('lemon',1)"></div>
-              </div>
+              <div class="slider-dots"><div class="slider-dot active" onclick="goCraft('lemon',0)"></div><div class="slider-dot" onclick="goCraft('lemon',1)"></div></div>
             </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#e8cc3a"></div>
-                <div>
-                  <div class="prod-name">Lemon Bancha</div>
-                  <div class="prod-tagline">"Like a crisp dry cider"</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#fffde0;color:#854F0B;">Pesticide-free leaves</span>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#e8cc3a"></div><div><div class="prod-name">Lemon Bancha</div><div class="prod-tagline">"Like a crisp dry cider"</div></div></div>
+              <span class="prod-badge" style="background:#fffde0;color:#854F0B;">Pesticide-free</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Grilled meat</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Tenku Farm, Mt.Chiba, Shimada, Shizuoka (400m)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Tenku Farm, Shimada, Shizuoka (400m)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Lemon myrtle, smoky tea</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Very dry & refreshing</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Extraction</span><span class="prod-detail-v">Low-pressure vacuum (≤ 70°C)</span></div>
               <div class="prod-ingredients">Water, Green tea, Lemon myrtle, Oolong hojicha, Lemon peel, Dried yuzu peel, Chamomile, Citric acid, Malic acid, Ascorbic acid, Carbon dioxide.</div>
             </div>
           </div>
@@ -423,72 +284,49 @@ html,body{
           <div class="prod-card">
             <div class="slider-wrap" id="apple-slider">
               <div class="slider-track" id="apple-track">
-                <img src="https://nagamine-booth.vercel.app/apple_wakocha.webp" alt="Apple Wakocha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/apple_wakocha.webp" alt="Apple Wakocha" loading="lazy">
                 <img src="https://nagamine-booth.vercel.app/apple_wakocha_bottle.webp" alt="Apple Wakocha bottle" loading="lazy">
               </div>
               <button class="slider-btn prev" onclick="slideCraft('apple',-1)">&#8249;</button>
               <button class="slider-btn next" onclick="slideCraft('apple',1)">&#8250;</button>
-              <div class="slider-dots">
-                <div class="slider-dot active" onclick="goCraft('apple',0)"></div>
-                <div class="slider-dot" onclick="goCraft('apple',1)"></div>
-              </div>
+              <div class="slider-dots"><div class="slider-dot active" onclick="goCraft('apple',0)"></div><div class="slider-dot" onclick="goCraft('apple',1)"></div></div>
             </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#d4875a"></div>
-                <div>
-                  <div class="prod-name">Apple Wakocha</div>
-                  <div class="prod-tagline">"Like a dry sparkling red wine"</div>
-                </div>
-              </div>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#d4875a"></div><div><div class="prod-name">Apple Wakocha</div><div class="prod-tagline">"Like a dry sparkling red wine"</div></div></div>
               <span class="prod-badge" style="background:#fdf0e8;color:#993C1D;">JAS Organic grower</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Cheese & Charcuterie</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Ikedaen, Toyosawa, Fukuroi, Shizuoka</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivar</span><span class="prod-detail-v">Kosun (香駿) — Matsuda Farm (JAS organic certified grower)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Ikedaen, Fukuroi, Shizuoka</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Cultivar</span><span class="prod-detail-v">Kosun (香駿) — JAS organic certified grower</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Baked apple, cinnamon, osmanthus</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Warm & floral</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Extraction</span><span class="prod-detail-v">Low-pressure vacuum (≤ 70°C)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Allergen</span><span class="prod-detail-v" style="color:#c00">Contains: Apple</span></div>
-              <div class="prod-ingredients">Water, Black tea (Koshin, JAS organic), Dried apple pieces, Cinnamon, Osmanthus, Malic acid, Ascorbic acid, Carbon dioxide. Contains: Apple.</div>
+              <div class="prod-ingredients">Water, Black tea (Kosun, JAS organic), Dried apple pieces, Cinnamon, Osmanthus, Malic acid, Ascorbic acid, Carbon dioxide. Contains: Apple.</div>
             </div>
           </div>
 
           <div class="prod-card">
             <div class="slider-wrap" id="ginger-slider">
               <div class="slider-track" id="ginger-track">
-                <img src="https://nagamine-booth.vercel.app/ginger_hojicha.webp" alt="Ginger Hojicha food pairing" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/ginger_hojicha.webp" alt="Ginger Hojicha" loading="lazy">
                 <img src="https://nagamine-booth.vercel.app/ginger_hojicha_bottle.webp" alt="Ginger Hojicha bottle" loading="lazy">
               </div>
               <button class="slider-btn prev" onclick="slideCraft('ginger',-1)">&#8249;</button>
               <button class="slider-btn next" onclick="slideCraft('ginger',1)">&#8250;</button>
-              <div class="slider-dots">
-                <div class="slider-dot active" onclick="goCraft('ginger',0)"></div>
-                <div class="slider-dot" onclick="goCraft('ginger',1)"></div>
-              </div>
+              <div class="slider-dots"><div class="slider-dot active" onclick="goCraft('ginger',0)"></div><div class="slider-dot" onclick="goCraft('ginger',1)"></div></div>
             </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#c9944a"></div>
-                <div>
-                  <div class="prod-name">Ginger Hojicha</div>
-                  <div class="prod-tagline">"Like a dry ginger aperitif"</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#fdf4e0;color:#633806;">Pesticide-free leaves</span>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#c9944a"></div><div><div class="prod-name">Ginger Hojicha</div><div class="prod-tagline">"Like a dry ginger aperitif"</div></div></div>
+              <span class="prod-badge" style="background:#fdf4e0;color:#633806;">Pesticide-free</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Pairing</span><span class="prod-detail-v">Spicy or savory dishes</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Tenku Farm, Mt.Chiba, Shimada, Shizuoka (400m)</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Base tea</span><span class="prod-detail-v">Roasted oolong (hojicha style)</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Tea origin</span><span class="prod-detail-v">Tenku Farm, Shimada, Shizuoka (400m)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Roasted tea, gentle ginger</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Finish</span><span class="prod-detail-v">Dry & warming</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Extraction</span><span class="prod-detail-v">Low-pressure vacuum (≤ 70°C)</span></div>
-              <div class="prod-ingredients">Water, Oolong hojicha (grown without pesticides), Dried ginger (Kochi, Japan), Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.</div>
+              <div class="prod-ingredients">Water, Oolong hojicha (pesticide-free), Dried ginger (Kochi, Japan), Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.</div>
             </div>
           </div>
-
         </div>
 
         <div class="prod-section-title">Bodai-Sancha — Raw Materials</div>
@@ -497,9 +335,9 @@ html,body{
           <div class="prod-card">
             <div class="slider-wrap" id="bodai-slider">
               <div class="slider-track" id="bodai-track">
-                <img src="https://nagamine-booth.vercel.app/bodaisancha_liquor.webp" alt="Bodai-Sancha — liquor" loading="lazy">
-                <img src="https://nagamine-booth.vercel.app/bodaisancha_leaf.webp" alt="Bodai-Sancha — leaf" loading="lazy">
-                <img src="https://nagamine-booth.vercel.app/bodaisancha_package.webp" alt="Bodai-Sancha — package" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodaisancha_liquor.webp" alt="Bodai-Sancha liquor" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodaisancha_leaf.webp" alt="Bodai-Sancha leaf" loading="lazy">
+                <img src="https://nagamine-booth.vercel.app/bodaisancha_package.webp" alt="Bodai-Sancha package" loading="lazy">
               </div>
               <button class="slider-btn prev" onclick="slideBodyi(-1)">&#8249;</button>
               <button class="slider-btn next" onclick="slideBodyi(1)">&#8250;</button>
@@ -510,62 +348,26 @@ html,body{
               </div>
             </div>
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#1D9E75"></div>
-                <div>
-                  <div class="prod-name">Bodai-Sancha — Autumn Harvest</div>
-                  <div class="prod-tagline">2024 Autumn · Shuto Bancha</div>
-                </div>
-              </div>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#1D9E75"></div><div><div class="prod-name">Bodai-Sancha — Autumn Harvest</div><div class="prod-tagline">2024 Autumn · Shuto Bancha</div></div></div>
               <span class="prod-badge" style="background:#E1F5EE;color:#085041;">B2B</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">Autumn 2024 (October)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Character</span><span class="prod-detail-v">Rich umami with citrus acidity</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Warm, fuller body</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Ikedaen, Toyosawa (Bodai district), Fukuroi, Shizuoka</span></div>
+              <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Ikedaen, Toyosawa (Bodai district), Fukuroi</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Fermentation</span><span class="prod-detail-v">Natural lactic acid (~4 weeks)</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">The raw ingredient of Sparkling Tea bodhi. Autumn harvest offers a slightly richer, umami-forward profile. Please feel free to smell and touch.</div>
             </div>
           </div>
 
           <div class="prod-card">
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#085041"></div>
-                <div>
-                  <div class="prod-name">Bodai-Sancha — Winter Harvest</div>
-                  <div class="prod-tagline">2024 December · Kancha</div>
-                </div>
-              </div>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#085041"></div><div><div class="prod-name">Bodai-Sancha — Winter Harvest</div><div class="prod-tagline">2024 December · Kancha</div></div></div>
               <span class="prod-badge" style="background:#E1F5EE;color:#085041;">B2B</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">December 2024</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Character</span><span class="prod-detail-v">Clean, bright acidity</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Aroma</span><span class="prod-detail-v">Clear citrus, lighter body</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Toyosawa, Fukuroi, Shizuoka</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Fermentation</span><span class="prod-detail-v">Natural lactic acid (~4 weeks)</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Winter harvest (Kancha) produces a cleaner, more refreshing acidity with a lighter body. The two harvests offer distinctly different expressions of the same tea.</div>
-            </div>
-          </div>
-
-          <div class="prod-card">
-            <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#085041"></div>
-                <div>
-                  <div class="prod-name">Bodai-Sancha Powder</div>
-                  <div class="prod-tagline">For foodservice & beverage use</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#E1F5EE;color:#085041;">B2B</span>
-            </div>
-            <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Form</span><span class="prod-detail-v">Fine powder</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Use</span><span class="prod-detail-v">Drinks, foods, café menus</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Solubility</span><span class="prod-detail-v">Dissolves instantly</span></div>
-              <div style="margin-top:8px;font-size:11px;color:#555;line-height:1.6;">Available for wholesale. Ask our staff for B2B sourcing details.</div>
             </div>
           </div>
         </div>
@@ -573,129 +375,40 @@ html,body{
         <div class="prod-section-title" style="margin-top:8px;">Tea Powders</div>
         <div class="section-note">B2B wholesale · Foodservice · Café &amp; beverage applications</div>
         <div class="prod-cards">
-
           <div class="prod-card">
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#5a8a3a"></div>
-                <div>
-                  <div class="prod-name">Matcha — Culinary Grade</div>
-                  <div class="prod-tagline">Bright color · Low bitterness</div>
-                </div>
-              </div>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#5a8a3a"></div><div><div class="prod-name">Matcha — Culinary Grade</div><div class="prod-tagline">Bright color · Low bitterness</div></div></div>
               <span class="prod-badge" style="background:#f0fad0;color:#3B6D11;">US Standards</span>
             </div>
             <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">Autumn 2025</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Fukuroi City, Shizuoka</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Cultivar</span><span class="prod-detail-v">Tsuyuhikari</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivation</span><span class="prod-detail-v">Conventional (US Standards)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Grade</span><span class="prod-detail-v">Culinary / Food processing</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Bright color and low bitterness. Suitable for lattes, baking, and food manufacturing.</div>
             </div>
           </div>
 
           <div class="prod-card">
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#2d6e2d"></div>
-                <div>
-                  <div class="prod-name">Matcha — Ceremonial Grade</div>
-                  <div class="prod-tagline">First flush · Covered cultivation</div>
-                </div>
-              </div>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#2d6e2d"></div><div><div class="prod-name">Matcha — Ceremonial Grade</div><div class="prod-tagline">First flush · Covered cultivation</div></div></div>
               <span class="prod-badge" style="background:#f0fad0;color:#3B6D11;">US Standards</span>
             </div>
             <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">First flush 2025</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Okabe, Fujieda City, Shizuoka</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Cultivar</span><span class="prod-detail-v">Yabukita</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivation</span><span class="prod-detail-v">Covered · Conventional (US Standards)</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Production</span><span class="prod-detail-v">Brick kiln method</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Premium ceremonial grade. Deep umami and vivid green color from covered cultivation and brick kiln processing.</div>
             </div>
           </div>
 
           <div class="prod-card">
             <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#8ab840"></div>
-                <div>
-                  <div class="prod-name">Green Tea Powder + Lemon Myrtle</div>
-                  <div class="prod-tagline">Kamairicha · Citrus aroma</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#E1F5EE;color:#085041;">No pesticides</span>
-            </div>
-            <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Tenku Farm, Mt.Chiba, Shimada (400m)</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivation</span><span class="prod-detail-v">No pesticides, no fertilizer</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Process</span><span class="prod-detail-v">Lemon myrtle blended at rolling stage</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Ingredients</span><span class="prod-detail-v">Kamairicha (green tea), Lemon myrtle</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Bright citrus aroma from lemon myrtle, blended with pan-fired green tea from high-altitude farm. Versatile for beverages and culinary use.</div>
-            </div>
-          </div>
-
-          <div class="prod-card">
-            <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#c47c5a"></div>
-                <div>
-                  <div class="prod-name">Black Tea Powder + Lemon Myrtle</div>
-                  <div class="prod-tagline">Wakocha · Citrus aroma</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#E1F5EE;color:#085041;">No pesticides</span>
-            </div>
-            <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Tenku Farm, Mt.Chiba, Shimada (400m)</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivation</span><span class="prod-detail-v">No pesticides, no fertilizer</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Process</span><span class="prod-detail-v">Lemon myrtle blended at rolling stage</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Ingredients</span><span class="prod-detail-v">Black tea, Lemon myrtle</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Japanese black tea with lemon myrtle from high-altitude farm (no pesticides or fertilizers used). Rich tea character with bright citrus lift.</div>
-            </div>
-          </div>
-
-          <div class="prod-card">
-            <div class="prod-card-header" onclick="toggleProd(this)">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#6b3a1f"></div>
-                <div>
-                  <div class="prod-name">Hojicha Powder</div>
-                  <div class="prod-tagline">Roasted · Autumn/Winter harvest</div>
-                </div>
-              </div>
+              <div class="prod-card-left"><div class="prod-color-bar" style="background:#6b3a1f"></div><div><div class="prod-name">Hojicha Powder</div><div class="prod-tagline">Roasted · Low caffeine</div></div></div>
               <span class="prod-badge" style="background:#fdf4e0;color:#633806;">Shizuoka</span>
             </div>
             <div class="prod-body">
               <div class="prod-detail-row"><span class="prod-detail-k">Origin</span><span class="prod-detail-v">Shizuoka Prefecture</span></div>
               <div class="prod-detail-row"><span class="prod-detail-k">Base</span><span class="prod-detail-v">Autumn/Winter Bancha</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivation</span><span class="prod-detail-v">Conventional</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Roasted hojicha powder. Rich roasted aroma with low caffeine. Suitable for lattes, confectionery, and cooking.</div>
             </div>
           </div>
-
-          <div class="prod-card" style="border-color:#c8c2f0;">
-            <div class="prod-card-header" onclick="toggleProd(this)" style="background:#faf9ff;">
-              <div class="prod-card-left">
-                <div class="prod-color-bar" style="background:#a89be0"></div>
-                <div>
-                  <div class="prod-name">Bodai-Sancha Powder</div>
-                  <div class="prod-tagline">Lacto-fermented · Roasted · 2023 Autumn</div>
-                </div>
-              </div>
-              <span class="prod-badge" style="background:#f0eeff;color:#534AB7;">Unique</span>
-            </div>
-            <div class="prod-body">
-              <div class="prod-detail-row"><span class="prod-detail-k">Harvest</span><span class="prod-detail-v">Autumn 2023</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Cultivation</span><span class="prod-detail-v">Conventional</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Process</span><span class="prod-detail-v">Lactic acid fermentation → High-heat roasting → Powder</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Character</span><span class="prod-detail-v">Deep roasted aroma + bright natural acidity</span></div>
-              <div class="prod-detail-row"><span class="prod-detail-k">Use</span><span class="prod-detail-v">Beverages, lattes, culinary applications</span></div>
-              <div style="margin-top:8px;font-size:13px;color:#555;line-height:1.6;">Lactic acid fermented tea, roasted at high heat and powdered. Unique combination of fermentation-derived acidity and roasted depth. Ask our staff for B2B sourcing details.</div>
-            </div>
-          </div>
-
         </div>
 
         <div style="text-align:center;padding:8px 0 16px;font-size:10px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase;">All products · Made in Japan · Shizuoka Prefecture</div>
@@ -707,23 +420,14 @@ html,body{
       <div id="learn-inner">
         <div class="video-section">
           <div class="video-wrap">
-            <iframe
-              src="https://www.youtube.com/embed/qVe6-0HrAqc"
-              title="Nagamine Seicha — Sparkling Tea"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              loading="lazy">
-            </iframe>
+            <iframe src="https://www.youtube.com/embed/qVe6-0HrAqc" title="Nagamine Seicha" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="video-label">Nagamine Seicha · Craft Sparkling Tea &amp; bodhi</div>
         </div>
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">What is Sparkling Tea?</div>
-              <div class="learn-subtitle">A new category of beverage</div>
-            </div>
+            <div><div class="learn-title">What is Sparkling Tea?</div><div class="learn-subtitle">A new category of beverage</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
@@ -735,10 +439,7 @@ html,body{
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">What is Lacto-Fermented Tea?</div>
-              <div class="learn-subtitle">The science behind bodhi</div>
-            </div>
+            <div><div class="learn-title">What is Lacto-Fermented Tea?</div><div class="learn-subtitle">The science behind bodhi</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
@@ -746,55 +447,35 @@ html,body{
             <p>No bacteria are added from outside. The fermentation is driven entirely by microorganisms naturally present in the tea leaves themselves.</p>
             <p>The process: Steaming → Anaerobic fermentation (~4 weeks) → Sun drying → Finished tea leaf.</p>
             <div class="highlight">The result: a distinctive citrus aroma and bright natural acidity — entirely from fermentation, zero additives.</div>
-            <p><strong style="font-size:13px;">Is bodhi bottle-conditioned?</strong></p>
-            <p>No. Fermentation occurs entirely at the tea leaf stage during Bodai-Sancha production. The finished bodhi beverage is extracted Bodai-Sancha liquid with CO₂ added — there is no active fermentation in the bottle. bodhi is a stable, pasteurized sparkling beverage, not a bottle-conditioned product.</p>
           </div>
         </div>
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">Why is it unsweetened?</div>
-              <div class="learn-subtitle">Zero sugar — naturally</div>
-            </div>
+            <div><div class="learn-title">Why is it unsweetened?</div><div class="learn-subtitle">Zero sugar — naturally</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
             <p>Zero added sugar — and this is a deliberate philosophy, not a compromise.</p>
             <p>We designed these beverages to be enjoyed during a meal, the way you would drink a dry wine. Sugar competes with food flavors and masks the natural character of the tea leaf.</p>
-            <p>Our philosophy: the tea itself is the star. We want to express the aroma, acidity, and origin of each leaf — not cover it with sweetness.</p>
             <div class="highlight">Many sparkling teas on the market contain added sugar or are grape juice-based. Ours are different — pure tea expression, nothing added.</div>
-            <p style="margin-top:12px;font-weight:500;font-size:13px;color:#111;">A note on acidity</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
-              <div style="background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;border-left:3px solid #a89be0;">
-                <span style="font-weight:500;color:#534AB7;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Sparkling Tea bodhi</span><br>
-                Acidity comes entirely from the tea leaf — produced during lactic acid fermentation of Bodai-Sancha. No organic acids added.
-              </div>
-              <div style="background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
-                <span style="font-weight:500;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Yuzu Sencha · Lemon Bancha · Apple Wakocha · Ginger Hojicha</span><br>
-                Malic acid and/or citric acid added to complement each tea's natural character and enable ambient (room temperature) storage.
-              </div>
-            </div>
           </div>
         </div>
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">bodhi vs. Kombucha</div>
-              <div class="learn-subtitle">A completely different category</div>
-            </div>
+            <div><div class="learn-title">bodhi vs. Kombucha</div><div class="learn-subtitle">A completely different category</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
             <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
               <div style="background:#f8f8f8;border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
                 <span style="font-weight:500;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Kombucha</span><br>
-                Sugar required · SCOBY fermentation · Vinegar-like acidity · Trace alcohol possible · Sweet taste
+                Sugar required · SCOBY fermentation · Trace alcohol possible · Sweet taste
               </div>
               <div style="background:#f0eeff;border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;border-left:3px solid #a89be0;">
                 <span style="font-weight:500;color:#534AB7;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">bodhi</span><br>
-                No sugar · Natural lactic acid fermentation · 0.0% alcohol · Wine-like dry acidity · Lacto-fermented tea leaf
+                No sugar · Natural lactic acid fermentation · 0.0% alcohol · Wine-like dry acidity
               </div>
             </div>
             <div class="highlight">bodhi is not a kombucha alternative — it is an entirely new category.</div>
@@ -803,47 +484,7 @@ html,body{
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">Production & Food Safety</div>
-              <div class="learn-subtitle">pH · Pasteurization · Carbonation</div>
-            </div>
-            <span class="learn-icon">+</span>
-          </div>
-          <div class="learn-body">
-            <p>All Craft Sparkling Tea products are properly pasteurized and pH-controlled for food safety compliance.</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
-              <div style="background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
-                <span style="font-weight:500;color:#3B6D11;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Yuzu Sencha · Lemon Bancha</span><br>
-                pH &lt; 4.0 · Pasteurized at 65°C for 15 minutes
-              </div>
-              <div style="background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
-                <span style="font-weight:500;color:#854F0B;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Apple Wakocha · Ginger Hojicha · bodhi</span><br>
-                pH &lt; 4.6 · Pasteurized at 85°C for 30 minutes
-              </div>
-            </div>
-            <p>Extraction: All five products use low-pressure vacuum extraction at approximately 70°C or below, preserving delicate aroma compounds that would otherwise be lost at higher temperatures.</p>
-            <div class="highlight">Carbonation level: approximately GV 2.8 — softer than sparkling water (~4 GV), designed for elegant effervescence that enhances food pairing without overpowering the tea aroma.</div>
-            <p style="margin-top:12px;font-weight:500;font-size:13px;color:#111;">About organic acids (malic acid & citric acid)</p>
-            <p>Four of the five Craft Sparkling Tea varieties contain malic acid and/or citric acid. These are not flavor additives — they serve two specific purposes: balancing the natural character of each tea variety, and enabling ambient (room temperature) shelf storage without refrigeration.</p>
-            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;">
-              <div style="background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
-                <span style="font-weight:500;color:#534AB7;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Sparkling Tea bodhi</span><br>
-                No organic acids added — acidity comes entirely from lactic acid fermentation of the tea leaf.
-              </div>
-              <div style="background:var(--bg-soft);border-radius:8px;padding:10px 12px;font-size:13px;line-height:1.6;">
-                <span style="font-weight:500;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;">Yuzu Sencha · Lemon Bancha · Apple Wakocha · Ginger Hojicha</span><br>
-                Malic acid and/or citric acid added to complement each tea's natural profile and ensure stable ambient storage.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="learn-card">
-          <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">Food Pairing Guide</div>
-              <div class="learn-subtitle">Which tea goes with what?</div>
-            </div>
+            <div><div class="learn-title">Food Pairing Guide</div><div class="learn-subtitle">Which tea goes with what?</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
@@ -861,14 +502,10 @@ html,body{
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">How to Order / Contact Us</div>
-              <div class="learn-subtitle">Wholesale, B2B & retail inquiries</div>
-            </div>
+            <div><div class="learn-title">How to Order / Contact Us</div><div class="learn-subtitle">Wholesale, B2B & retail inquiries</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
-            <p>We welcome inquiries from importers, distributors, restaurants, hotels, and retailers worldwide.</p>
             <table class="vs-table">
               <tr><th>Channel</th><th>Details</th></tr>
               <tr><td>Email</td><td>info@nagamine-seicha.co.jp</td></tr>
@@ -876,65 +513,25 @@ html,body{
               <tr><td>Website</td><td>nagamine.jp</td></tr>
               <tr><td>Phone</td><td>+81-54-624-0671</td></tr>
             </table>
-            <div class="highlight">At this booth: please leave your business card or scan the QR code. Our team will follow up with you after the event.</div>
+            <div class="highlight">Please leave your business card or scan the QR code. Our team will follow up after the event.</div>
           </div>
         </div>
 
         <div class="learn-card">
           <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">About Nagamine Seicha</div>
-              <div class="learn-subtitle">Est. 1876 · Shizuoka, Japan</div>
-            </div>
+            <div><div class="learn-title">Download Brochures</div><div class="learn-subtitle">Product information PDFs</div></div>
             <span class="learn-icon">+</span>
           </div>
           <div class="learn-body">
-            <p>Nagamine Seicha is a Japanese tea producer based in Yaizu, Shizuoka Prefecture — one of Japan's most renowned tea-growing regions.</p>
-            <p>Founded in 1876, we have 150 years of tea expertise, with 8 stores across Japan including Tokyo, and a thriving online shop.</p>
-            <p>From traditional sencha and hojicha to our pioneering lacto-fermented tea and sparkling tea, we invite you to explore tea in an entirely new way.</p>
-            <div class="highlight" style="line-height:2;">
-              🌐 <a href="https://nagamine.jp" target="_blank" style="color:#534AB7;">nagamine.jp</a><br>
-              📧 <a href="mailto:info@nagamine-seicha.co.jp" style="color:#534AB7;">info@nagamine-seicha.co.jp</a><br>
-              📷 <a href="https://www.instagram.com/nagamine.tea/" target="_blank" style="color:#534AB7;">@nagamine.tea</a><br>
-              📞 +81-54-624-0671 · Yaizu, Shizuoka, Japan
-            </div>
-          </div>
-        </div>
-
-        <div class="learn-card">
-          <div class="learn-card-header" onclick="toggleLearn(this)">
-            <div>
-              <div class="learn-title">Download Brochures</div>
-              <div class="learn-subtitle">Product information PDFs</div>
-            </div>
-            <span class="learn-icon">+</span>
-          </div>
-          <div class="learn-body">
-            <p style="margin-top:8px;">Download our product brochures for detailed information.</p>
             <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px;">
               <a href="/craftsparklingtea.pdf" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg-soft);border-radius:10px;text-decoration:none;border:1px solid var(--line);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d4875a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                <div>
-                  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;">Craft Sparkling Tea</div>
-                  <div style="font-size:11px;color:var(--muted);margin-top:1px;">Product brochure · PDF</div>
-                </div>
-                <svg style="margin-left:auto;flex-shrink:0;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;">Craft Sparkling Tea</div><div style="font-size:11px;color:var(--muted);">Product brochure · PDF</div></div>
               </a>
               <a href="/bodhi.pdf" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg-soft);border-radius:10px;text-decoration:none;border:1px solid var(--line);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a89be0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                <div>
-                  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;">Sparkling Tea bodhi</div>
-                  <div style="font-size:11px;color:var(--muted);margin-top:1px;">Product brochure · PDF</div>
-                </div>
-                <svg style="margin-left:auto;flex-shrink:0;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;">Sparkling Tea bodhi</div><div style="font-size:11px;color:var(--muted);">Product brochure · PDF</div></div>
               </a>
               <a href="/bodaisancha.pdf" target="_blank" style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--bg-soft);border-radius:10px;text-decoration:none;border:1px solid var(--line);">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-                <div>
-                  <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;">Bodai-Sancha</div>
-                  <div style="font-size:11px;color:var(--muted);margin-top:1px;">Product brochure · PDF</div>
-                </div>
-                <svg style="margin-left:auto;flex-shrink:0;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#bbb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                <div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:15px;color:#111;text-transform:uppercase;">Bodai-Sancha</div><div style="font-size:11px;color:var(--muted);">Product brochure · PDF</div></div>
               </a>
             </div>
           </div>
@@ -952,164 +549,27 @@ const SYSTEM_PROMPT = `You are a hospitality assistant for Nagamine Seicha at Wo
 
 LANGUAGE RULE: Always detect and respond in the visitor's language automatically.
 
-COMPANY: Nagamine Seicha Co., Ltd. Founded 1876. 8 stores in Japan including Tokyo.
-Website: nagamine.jp
-Email: info@nagamine-seicha.co.jp
-Instagram: @nagamine.tea — https://www.instagram.com/nagamine.tea/
-Phone: +81-54-624-0671
-Address: Yaizu, Shizuoka, Japan
-
-When visitors ask for contact or follow-up: direct them to info@nagamine-seicha.co.jp or Instagram @nagamine.tea.
+COMPANY: Nagamine Seicha Co., Ltd. Founded 1876. Yaizu, Shizuoka, Japan.
+Website: nagamine.jp / Email: info@nagamine-seicha.co.jp / Instagram: @nagamine.tea / Phone: +81-54-624-0671
 
 PRODUCTS:
-1. Craft Sparkling Tea — 4 varieties. All: Unsweetened / 0% alcohol / 200mL glass bottle / pH below 4.6 / Pasteurized / 6 months shelf life / Made in Japan.
-- Yuzu Sencha: "Like the finest white wine." Base tea: Sencha Miyama-Kaori cultivar, grown without pesticides. Origin: Tenku Farm, Mt.Chiba, Shimada City, Shizuoka (altitude 400m). Bright yuzu citrus aroma. Pairing: Seafood. Ingredients: Water, Green tea, Dried yuzu peel, Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.
-- Lemon Bancha: "Like a crisp dry cider." Base tea: Kamairicha (pan-fired green tea), grown without pesticides. Origin: Tenku Farm, Mt.Chiba, Shimada City, Shizuoka (altitude 400m). Very dry finish. Pairing: Grilled meat. Ingredients: Water, Green tea, Lemon myrtle, Oolong hojicha, Lemon peel, Dried yuzu peel, Chamomile, Citric acid, Malic acid, Ascorbic acid, Carbon dioxide.
-- Apple Wakocha: "Like a dry sparkling red wine." Base tea: Japanese black tea (wakocha), Kosun (香駿) cultivar. Producer: Matsuda Farm (JAS organic certified grower), Ikedaen, Toyosawa, Fukuroi City, Shizuoka. Note: The JAS organic certification applies to the tea leaf grower (Matsuda Farm), not the finished bottled product. Baked apple, cinnamon, osmanthus. Pairing: Cheese & Charcuterie. Contains: Apple. Ingredients: Water, Black tea, Dried apple pieces, Cinnamon, Osmanthus, Malic acid, Ascorbic acid, Carbon dioxide.
-- Ginger Hojicha: "Like a dry ginger aperitif." Base tea: Roasted oolong (hojicha style), grown without pesticides. Origin: Tenku Farm, Mt.Chiba, Shimada City, Shizuoka (altitude 400m). Gentle ginger warmth. Pairing: Spicy or Savory dishes. Ingredients: Water, Oolong hojicha, Dried ginger (Kochi Japan), Lemon peel, Lemongrass, Malic acid, Citric acid, Ascorbic acid, Carbon dioxide.
+1. Craft Sparkling Tea (4 varieties) — Unsweetened / 0% alcohol / 200mL / Made in Japan
+- Yuzu Sencha: Pairing: Seafood. Aroma: Bright yuzu citrus. Pesticide-free leaves.
+- Lemon Bancha: Pairing: Grilled meat. Very dry finish. Pesticide-free leaves.
+- Apple Wakocha: Pairing: Cheese & Charcuterie. Contains: Apple. JAS organic grower.
+- Ginger Hojicha: Pairing: Spicy/savory dishes. Pesticide-free leaves.
 
-2. Sparkling Tea bodhi: Made by extracting Bodai-Sancha (lacto-fermented tea leaves from Ikedaen, Toyosawa, Fukuroi — known locally as the Bodai district) and adding carbonation. 0% alcohol, zero sugar, zero additives. 9 months shelf life. Ingredients: Water, Lactic-fermented tea (Camellia sinensis), Carbon dioxide. Taste: dry, wine-like acidity, citrus lift. NOT Kombucha.
+2. Sparkling Tea bodhi — Lacto-fermented tea. 0% alcohol. Zero sugar. Zero additives. 9 months shelf life. NOT Kombucha.
+Ingredients: Water, Lactic-fermented tea (Camellia sinensis), Carbon dioxide.
 
-IMPORTANT — FREQUENTLY ASKED: bodhi is NOT bottle-conditioned / NOT secondary fermentation in the bottle.
-- Fermentation occurs ONLY at the tea leaf stage (Bodai-Sancha production), not in the bottle.
-- The finished beverage is simply: extracted Bodai-Sancha liquid + carbonation (CO2 added).
-- There is no active fermentation in the bottle. It is a stable, pasteurized beverage.
-- This is fundamentally different from bottle-conditioned beer, champagne méthode traditionnelle, or kombucha.
+3. Bodai-Sancha — Fermented tea leaf. B2B raw material. Two harvests: Autumn 2024 & Winter 2024.
 
-3. Bodai-Sancha (raw materials on display): Traditional Japanese fermented tea LEAF — not a beverage. The raw ingredient of bodhi. Lactic acid bacteria are naturally present in the tea leaves — no external addition. Two harvests on display:
-- Autumn 2024 (Shuto Bancha, October harvest): slightly richer profile with umami notes and citrus acidity. Warmer, fuller body.
-- December 2024 (Kancha harvest): clean, bright acidity with lighter body. More refreshing and clear.
-Both harvests available as loose leaf and powder for B2B foodservice use.
-
-LACTO-FERMENTED TEA EXPLANATION: Tea leaves are steamed, then undergo anaerobic lactic acid fermentation for ~4 weeks using bacteria naturally present in the leaves, then sun-dried. Zero sugar, zero additives. The fermentation creates natural citrus aroma and bright acidity.
-
-WHY UNSWEETENED:
-Our sparkling teas contain zero added sugar — and this is a deliberate philosophy, not a compromise.
-
-We designed these beverages to be enjoyed during a meal, like a dry wine. Sugar competes with food flavors and masks the natural character of the tea.
-
-Our philosophy: tea itself is the star. We want to express the aroma, acidity, and terroir of each tea leaf — not cover it with sweetness.
-
-Note on acidity:
-- Sparkling Tea bodhi: acidity comes entirely from the tea leaf itself (lactic acid fermentation). No organic acids added.
-- The other 4 varieties (Yuzu Sencha, Lemon Bancha, Apple Wakocha, Ginger Hojicha): malic acid and/or citric acid are added to complement each tea's natural profile and enable ambient storage.
-
-Many sparkling tea products on the market contain added sugar or are grape juice-based. Our products are fundamentally different — pure tea expression with no sweeteners.
-
-SERVING: Well chilled 5°C. Wine glass or champagne flute recommended.
-
-CARBONATION: All Craft Sparkling Tea products have a carbonation level of approximately GV 2.8 (gas volume). This is softer than champagne (~6 GV) or sparkling water (~4 GV), designed for elegant, gentle effervescence that complements food pairing without overpowering the tea aroma.
-
-EXTRACTION METHOD: All five Craft Sparkling Tea products (Yuzu Sencha, Lemon Bancha, Apple Wakocha, Ginger Hojicha, and Sparkling Tea bodhi) are produced using low-pressure vacuum extraction (減圧抽出) at approximately 70°C or below. This method preserves delicate aroma compounds that would be lost at higher temperatures.
-
-ORGANIC ACIDS (malic acid & citric acid):
-- Sparkling Tea bodhi: NO organic acids added. Acidity comes entirely from lactic acid fermentation of the tea leaf.
-- The other 4 varieties (Yuzu Sencha, Lemon Bancha, Apple Wakocha, Ginger Hojicha): Malic acid and/or citric acid are added for two reasons: (1) to complement and balance the natural character of each tea variety, and (2) to enable stable ambient (room temperature) shelf storage without refrigeration. These are not flavor additives.
-
-COMMON QUESTIONS & ANSWERS:
-
-Q: Do you carry other teas besides sparkling tea?
-A: Yes. Nagamine Seicha also carries a full range of Japanese teas including sencha, fukamushi-cha (deep-steamed green tea), genmaicha, hojicha, and organic sencha. Please contact us for details: info@nagamine-seicha.co.jp
-
-Q: Are other bottle sizes available for the sparkling tea?
-A: Yes. Full bottle and half bottle formats are available. Please contact us for wholesale or custom order inquiries.
-
-Q: Is OEM / custom recipe production possible?
-A: Yes, we welcome consultations for custom recipe and OEM production. Please get in touch to discuss your requirements.
-
-Q: Can you make sparkling tea without organic acids (no malic acid / citric acid)?
-A: Yes, it is possible. However, products without organic acids require cold-chain refrigerated transport (10°C or below) as they cannot be stored at room temperature.
-
-Q: Can the carbonation level be increased?
-A: Strong carbonation is not available. Our products are designed at approximately GV 2.8–3.0, which provides elegant, food-friendly effervescence without overpowering the tea aroma.
-
-Q: Is organic Bodai-Sancha powder available?
-A: Not currently. However, we do have Bodai-Sancha produced from tea leaves grown on certified organic fields. Please contact us for details.
-
-Q: What cultivar is the Bodai-Sancha?
-A: The 2024 Autumn harvest and 2024 Winter harvest (Kancha) are both Yabukita cultivar. We also have a 2025 harvest of Kosun (香駿) cultivar available.
-
-Q: What does "Bodai-Sancha" mean?
-A: "Bodai" (菩提) is the local name for the Toszawa district in Fukuroi City, Shizuoka. "Sancha" (酸茶) is the name of a tea category — lacto-fermented tea with roots in southern China. The name literally means "sour tea," referring to its characteristic bright acidity.
-
-Q: How does Bodai-Sancha differ from Awa Bancha and Goishi-cha?
-A: All three are Japanese lacto-fermented teas, but the production methods differ:
-- Bodai-Sancha: Tea leaves are steamed, then vacuum-sealed for anaerobic lactic acid fermentation (single-stage fermentation).
-- Awa Bancha: Tea leaves are boiled to halt oxidation, then packed in wooden barrels for anaerobic fermentation (single-stage).
-- Goishi-cha: Tea leaves are steamed, then exposed to aerobic mold fermentation first, followed by anaerobic fermentation in wooden barrels (two-stage fermentation).
-In terms of acidity, Bodai-Sancha falls between Awa Bancha and Goishi-cha.
-
-Q: Is Bodai-Sancha hand-picked?
-A: No, it is machine-harvested.
-
-Q: How do I brew Bodai-Sancha?
-A: Use 2g of tea leaves with 150mL of boiling water. Steep for about 3 minutes, then pour. For the second infusion, pour boiling water again and wait about 1 minute. The liquor is nearly clear with a pale yellow color and a delicate apricot-like aroma.
-
-Q: Does Bodai-Sancha contain caffeine?
-A: Caffeine content is relatively low. The tea is harvested from larger, mature leaves picked in autumn and later — these leaves naturally contain less caffeine than young spring leaves.
-
-Q: How should I enjoy bodhi?
-A: Chill thoroughly in the refrigerator before serving. A wine glass or champagne flute is recommended to appreciate the aroma. bodhi also works beautifully as a mocktail base.
-
-Mocktail recipes:
-1. Melon & Elderflower: Cut melon into balls and soak in elderflower syrup. Place the melon balls in a shallow glass and pour bodhi over them.
-2. Sakura Mocktail: Desalt a preserved cherry blossom leaf and place it in a champagne flute. Add a small amount of cassis syrup, then pour bodhi. Garnish with the cherry blossom leaf.
-
-
-
-Q: What are the case dimensions and weight?
-A: One case contains 24 bottles (200mL each). Case dimensions: approximately 28cm × 42.5cm × 25cm. Gross weight: approximately 11.5kg per case.
-
-Q: Does bodhi contain live bacteria / probiotics?
-A: No. bodhi is pasteurized. The lactic acid fermentation occurs at the tea leaf stage. The finished beverage does not contain live bacteria.
-
-Q: What are the health benefits?
-A: We don't make specific health claims — US FDA regulations require approval for such claims. What we can say is that our products are made through traditional Japanese lactic acid fermentation with zero additives and only three ingredients. We let the product speak for itself.
-
-Q: Is it good for gut health / digestion?
-A: We're not able to make health claims under FDA regulations. The fermentation process is the same traditional method used in Japanese pickles for centuries. Our customers enjoy it as part of their wellness routine, but we leave health assessments to each individual.
-
-Q: Is it a probiotic drink?
-A: bodhi is pasteurized, so it does not contain live bacteria. The fermentation occurs entirely at the tea leaf stage. We cannot make probiotic claims.
-
-Q: What are the health benefits of your matcha?
-A: We're not able to make specific health claims under US regulations. Our matcha comes from Shizuoka, Japan — single origin, no additives, produced to US standards. The quality and origin speak for themselves.
-
-HEALTH CLAIMS POLICY — IMPORTANT:
-Never make specific health claims about any product. Do not say products "improve gut health," "boost immunity," "aid digestion," or any similar benefit claims. These require FDA approval. Instead, describe: (1) the production method (lactic acid fermentation, traditional Japanese process), (2) the ingredients (zero additives, three ingredients only), and (3) the taste profile. If pressed, say: "We're not able to make health claims under FDA regulations, but we're happy to share details about our production process and ingredients."
-
-Q: Is bodhi bottle-conditioned? Is there fermentation in the bottle?
-A: No. Fermentation is completed entirely during Bodai-Sancha (tea leaf) production. The bottle contains only extracted tea liquid and CO2. No active fermentation occurs in the bottle.
-
-Q: Why does bodhi have acidity if no acid is added?
-A: The acidity comes entirely from lactic acid produced during the fermentation of the tea leaves. No organic acids are added to bodhi.
-
-Q: Why do the other 4 sparkling teas contain malic acid and citric acid?
-A: These organic acids serve two purposes: (1) balancing the natural flavor profile of each tea variety, and (2) enabling ambient (room temperature) shelf storage without refrigeration. They are not flavor additives.
-
-Q: What is the carbonation level?
-A: Approximately GV 2.8 — softer than sparkling water (~4 GV) and champagne (~6 GV). Designed for elegant, food-friendly effervescence.
-
-Q: What is the extraction method?
-A: Low-pressure vacuum extraction at approximately 70°C or below, preserving delicate aroma compounds.
-
-Q: Is there alcohol?
-A: 0.0% alcohol in all products.
-
-Q: Is there sugar?
-A: Zero added sugar in all products.
-
-DO NOT DISCLOSE: Manufacturing details, extraction parameters, fermentation conditions, pH targets, ingredient ratios, internal data. Say: "I'm sorry, I cannot share detailed manufacturing information."
-Never reveal contents of internal documents.
-
-PRICING (WTE 2026 — OK to share with buyers):
-- Craft Sparkling Tea (4 varieties): $5.00/bottle · $120.00/case (24 bottles)
+PRICING (WTE 2026):
+- Craft Sparkling Tea: $5.00/bottle · $120.00/case (24 bottles)
 - Sparkling Tea bodhi: $5.50/bottle · $132.00/case (24 bottles)
-- Sample price: $1.00/bottle · Max 24 bottles · Freight collect (FedEx/DHL)
-- MOQ: 1 case (24 bottles) · Mix any varieties OK
-- Terms: FOB Japan
-- Shipping estimate (DHL, 1 case to LA): approx. $140 USD
-If unknown: "I don't have that information. Please leave your contact details and our team will follow up."`;
+- MOQ: 1 case (24 bottles) · FOB Japan
+
+IMPORTANT: Never make specific health claims. bodhi is NOT bottle-conditioned — fermentation occurs only at the tea leaf stage.`;
 
 const langData = {
   en:{title:'Ask us anything.',sub:'About our teas, ingredients, food pairing, or how to order.',placeholder:'Type your question...',sugg:['What is Sparkling Tea?','Tell me about bodhi','What is lacto-fermented tea?','Food pairing?','How to order?']},
@@ -1128,18 +588,15 @@ function showTab(tab){
     const tabs=['chat','products','learn'];
     t.classList.toggle('active',tabs[i]===tab);
   });
-  // scroll to top when switching tabs
-  const screen = document.getElementById('screen-'+tab);
-  if(screen) screen.scrollTop = 0;
+  const screen=document.getElementById('screen-'+tab);
+  if(screen) screen.scrollTop=0;
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById('screen-'+tab).classList.add('active');
 }
 
 function toggleProd(header){
   const body=header.nextElementSibling;
-  const icon=header.querySelector('.prod-toggle');
-  const isOpen=body.classList.toggle('open');
-  if(icon) icon.textContent=isOpen?'−':'+';
+  body.classList.toggle('open');
 }
 
 function toggleLearn(header){
@@ -1199,14 +656,10 @@ async function sendMessage(){
   messages.push({role:'user',content:text});
   addTyping();
   try{
-    const res=await fetch('/api/chat',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages})
-    });
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages})});
     const data=await res.json();
     document.getElementById('typing')?.remove();
-    const reply=data.content?.[0]?.text||'Sorry, something went wrong. Please try again.';
+    const reply=data.content?.[0]?.text||'Sorry, something went wrong.';
     messages.push({role:'assistant',content:reply});
     addMsg('assistant',reply);
   }catch(e){
@@ -1220,113 +673,44 @@ async function sendMessage(){
 
 initSugg();
 
-// 初回ウェルカムメッセージ
-setTimeout(() => {
-  const welcomeMsg = `Welcome to Nagamine Seicha — a Japanese tea producer from Shizuoka, Japan, founded in 1876.
+setTimeout(()=>{
+  addMsg('assistant','Welcome to Nagamine Seicha — Est. 1876, Shizuoka, Japan.\n\nAt this booth:\n• Craft Sparkling Tea — Japanese tea with carbonation. 0% alcohol, no sugar.\n• Sparkling Tea bodhi — lacto-fermented tea. A unique category.\n• Tea powders — matcha, hojicha & more. B2B wholesale available.\n\nHow can I help you?');
+},300);
 
-At this booth we are presenting:
-• Craft Sparkling Tea — Japanese tea with carbonation. 0% alcohol, no sugar, designed for food pairing.
-• Sparkling Tea bodhi — made from lacto-fermented tea leaf (Bodai-Sancha). A completely unique category.
-• Tea powders — matcha, hojicha, and more. Available for B2B wholesale.
+let bodaiIdx=0;
+function slideBodyi(dir){bodaiIdx=(bodaiIdx+dir+3)%3;updateSlider();}
+function goSlide(idx){bodaiIdx=idx;updateSlider();}
+function updateSlider(){
+  const track=document.getElementById('bodai-track');
+  if(!track)return;
+  track.style.transform='translateX(-'+(bodaiIdx*100)+'%)';
+  document.querySelectorAll('#bodai-slider .slider-dot').forEach((d,i)=>d.classList.toggle('active',i===bodaiIdx));
+}
+(function(){let sx=0;const wrap=document.getElementById('bodai-slider');if(!wrap)return;wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});wrap.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)slideBodyi(dx<0?1:-1);},{passive:true});})();
 
-How can I help you?
-  1. Tell me about the sparkling teas
-  2. What is bodhi?
-  3. Food pairing suggestions
-  4. Wholesale / B2B inquiry`;
-  addMsg('assistant', welcomeMsg);
-}, 300);
+let bodhiMainIdx=0;
+function slideBodhiMain(dir){bodhiMainIdx=(bodhiMainIdx+dir+2)%2;updateBodhiMain();}
+function goSlideMain(idx){bodhiMainIdx=idx;updateBodhiMain();}
+function updateBodhiMain(){
+  const track=document.getElementById('bodhi-track');
+  if(!track)return;
+  track.style.transform='translateX(-'+(bodhiMainIdx*100)+'%)';
+  document.querySelectorAll('#bodhi-slider .slider-dot').forEach((d,i)=>d.classList.toggle('active',i===bodhiMainIdx));
+}
+(function(){let sx=0;const wrap=document.getElementById('bodhi-slider');if(!wrap)return;wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});wrap.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)slideBodhiMain(dx<0?1:-1);},{passive:true});})();
 
-// Bodai-Sancha slider
-let bodaiIdx = 0;
-function slideBodyi(dir) {
-  bodaiIdx = (bodaiIdx + dir + 3) % 3;
-  updateSlider();
+const craftIdx={yuzu:0,lemon:0,apple:0,ginger:0};
+function slideCraft(key,dir){craftIdx[key]=(craftIdx[key]+dir+2)%2;updateCraft(key);}
+function goCraft(key,idx){craftIdx[key]=idx;updateCraft(key);}
+function updateCraft(key){
+  const track=document.getElementById(key+'-track');
+  if(!track)return;
+  track.style.transform='translateX(-'+(craftIdx[key]*100)+'%)';
+  document.querySelectorAll('#'+key+'-slider .slider-dot').forEach((d,i)=>d.classList.toggle('active',i===craftIdx[key]));
 }
-function goSlide(idx) {
-  bodaiIdx = idx;
-  updateSlider();
-}
-function updateSlider() {
-  const track = document.getElementById('bodai-track');
-  if (!track) return;
-  track.style.transform = 'translateX(-' + (bodaiIdx * 100) + '%)';
-  document.querySelectorAll('.slider-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === bodaiIdx);
-  });
-}
-// タッチスワイプ対応
-(function(){
-  let startX = 0;
-  const wrap = document.getElementById('bodai-slider');
-  if (!wrap) return;
-  wrap.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
-  wrap.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) slideBodyi(dx < 0 ? 1 : -1);
-  }, {passive:true});
-})();
-
-
-let bodhiMainIdx = 0;
-function slideBodhiMain(dir) {
-  bodhiMainIdx = (bodhiMainIdx + dir + 2) % 2;
-  updateBodhiMain();
-}
-function goSlideMain(idx) {
-  bodhiMainIdx = idx;
-  updateBodhiMain();
-}
-function updateBodhiMain() {
-  const track = document.getElementById('bodhi-track');
-  if (!track) return;
-  track.style.transform = 'translateX(-' + (bodhiMainIdx * 100) + '%)';
-  document.querySelectorAll('#bodhi-slider .slider-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === bodhiMainIdx);
-  });
-}
-(function(){
-  let sx = 0;
-  const wrap = document.getElementById('bodhi-slider');
-  if (!wrap) return;
-  wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
-  wrap.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - sx;
-    if (Math.abs(dx) > 40) slideBodhiMain(dx < 0 ? 1 : -1);
-  }, {passive:true});
-})();
-
-// Craft Sparkling Tea sliders (yuzu / lemon / apple / ginger)
-const craftIdx = { yuzu: 0, lemon: 0, apple: 0, ginger: 0 };
-function slideCraft(key, dir) {
-  craftIdx[key] = (craftIdx[key] + dir + 2) % 2;
-  updateCraft(key);
-}
-function goCraft(key, idx) {
-  craftIdx[key] = idx;
-  updateCraft(key);
-}
-function updateCraft(key) {
-  const track = document.getElementById(key + '-track');
-  if (!track) return;
-  track.style.transform = 'translateX(-' + (craftIdx[key] * 100) + '%)';
-  document.querySelectorAll('#' + key + '-slider .slider-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === craftIdx[key]);
-  });
-}
-['yuzu','lemon','apple','ginger'].forEach(key => {
-  (function(){
-    let sx = 0;
-    const wrap = document.getElementById(key + '-slider');
-    if (!wrap) return;
-    wrap.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
-    wrap.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) slideCraft(key, dx < 0 ? 1 : -1);
-    }, {passive:true});
-  })();
+['yuzu','lemon','apple','ginger'].forEach(key=>{
+  (function(){let sx=0;const wrap=document.getElementById(key+'-slider');if(!wrap)return;wrap.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});wrap.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)slideCraft(key,dx<0?1:-1);},{passive:true});})();
 });
-
 </script>
 </body>
 </html>
